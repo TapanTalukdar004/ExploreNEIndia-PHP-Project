@@ -1,0 +1,290 @@
+/* css/account.css */
+
+/* Make sure variables from universal.css are available or defined here */
+:root {
+    --background: #f4f7f6; /* Lighter page background */
+    --foreground: #333;
+    --card: #ffffff;
+    --border: #e0e0e0;
+    --primary: #4a90e2;
+    --primary-foreground: #ffffff;
+    --secondary: #6c757d;
+    --secondary-foreground: #ffffff;
+    --muted-foreground: #6c757d;
+    --radius: 0.5rem;
+    --success: #28a745;
+    --warning: #ffc107;
+    --danger: #dc3545;
+    --info: #17a2b8;
+}
+
+body {
+    background-color: var(--background);
+    color: var(--foreground);
+     /* Ensure body padding for navbar exists if header is sticky */
+     /* padding-top: 70px; */ /* Make sure this matches universal.css */
+}
+
+.icon { margin-right: 0.6em; }
+
+/* --- Account Header --- */
+.account-header {
+    background: linear-gradient(to right, #34495e, #2c3e50); /* Dark blue gradient */
+    color: #fff;
+    padding: 50px 0 40px 0;
+    /* margin-bottom: 40px; */
+    padding-top: calc(50px + var(--navbar-height)); /* Original top padding + navbar height */
+    margin-top: calc(-1 * var(--navbar-height));
+}
+.container{
+    text-align: center;
+    margin-bottom: 1.2rem;
+}
+.account-header h1 {
+    font-size: 2.5em;
+    margin-bottom: 5px;
+}
+.account-header p {
+    font-size: 1.1em;
+    opacity: 0.9;
+}
+
+/* --- Account Layout --- */
+
+.account-layout {
+    display: grid;
+    grid-template-columns: 250px 1fr; /* Sidebar and main content */
+    gap: 30px;
+    padding: 60px 2.5rem;
+}
+
+/* --- Account Menu (Sidebar) --- */
+.account-menu {
+    background-color: var(--card);
+    padding: 20px;
+    border-radius: var(--radius);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    height: fit-content; /* Fit content height */
+    position: sticky; /* Optional: make menu sticky */
+    top: calc(var(--navbar-height, 70px) + 20px); /* Adjust top offset */
+}
+.account-menu h2 {
+    font-size: 1.3em;
+    color: rgb(72, 72, 70);
+    margin-top: 0;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border);
+}
+.account-menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.account-menu li a {
+    display: flex;
+    align-items: center;
+    padding: 12px 15px;
+    text-decoration: none;
+    color: var(--muted-foreground);
+    border-radius: calc(var(--radius) * 0.8);
+    transition: background-color 0.2s ease, color 0.2s ease;
+    font-weight: 500;
+    margin-bottom: 5px; /* Space between links */
+}
+.account-menu li a .icon {
+    width: 1.1em; /* Slightly larger icon */
+    color: var(--secondary);
+    margin-right: 12px;
+    transition: color 0.2s ease;
+}
+.account-menu li a:hover {
+    background-color: #e9ecef; /* Light grey hover */
+    color: var(--primary);
+}
+.account-menu li a:hover .icon {
+    color: var(--primary);
+}
+.account-menu li a.active {
+    background-color: rgba(74, 144, 226, 0.1); /* Light primary bg */
+    color: var(--primary);
+    font-weight: 600;
+}
+.account-menu li a.active .icon {
+    color: var(--primary);
+}
+
+/* --- Account Main Content Area --- */
+.account-main {
+    /* background-color: var(--card); */
+    
+    padding: 30px;
+    border-radius: var(--radius);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+.account-main h2 {
+    font-size: 1.6em;
+    color: rgb(72, 72, 70);
+    margin-top: 0;
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid var(--border);
+}
+
+/* --- Booking List --- */
+.no-bookings-message {
+    text-align: center;
+    padding: 40px 20px;
+    border: 2px dashed var(--border);
+    border-radius: var(--radius);
+    background-color: #f8f9fa;
+}
+.no-bookings-message p {
+    margin-bottom: 20px;
+    font-size: 1.1em;
+    color: var(--muted-foreground);
+}
+
+.booking-list {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.booking-item {
+    display: grid;
+    grid-template-columns: 120px 1fr auto; /* Image | Details | Status/Action */
+    gap: 20px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 20px;
+    background-color: #fdfdfd; /* Slightly off-white */
+    align-items: center; /* Vertically align items */
+    transition: box-shadow 0.2s ease;
+}
+.booking-item:hover {
+     box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.booking-image {
+    width: 120px;
+    height: 90px; /* Maintain aspect ratio */
+    border-radius: calc(var(--radius) * 0.8);
+    overflow: hidden;
+}
+.booking-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.booking-details h3 {
+    font-size: 1.2em;
+    margin: 0 0 8px 0;
+    color: var(--foreground);
+    font-weight: 600;
+}
+.booking-details p {
+    font-size: 0.9em;
+    color: var(--muted-foreground);
+    margin: 4px 0;
+    line-height: 1.4;
+}
+.booking-details p strong {
+    color: var(--foreground);
+    font-weight: 500;
+    margin-right: 5px;
+}
+
+.booking-status-action {
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: space-between; /* Push status and actions apart */
+    min-height: 90px; /* Match image height approx */
+}
+
+.booking-status {
+    display: inline-block;
+    padding: 5px 12px;
+    border-radius: 15px;
+    font-size: 0.8em;
+    font-weight: 600;
+    margin-bottom: 15px; /* Space below status */
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+/* Status Colors */
+.status-pending_payment .booking-status { background-color: rgba(255, 193, 7, 0.2); color: #b8860b; /* DarkGoldenrod */ }
+.status-confirmed .booking-status { background-color: rgba(40, 167, 69, 0.15); color: var(--success); }
+.status-cancelled .booking-status { background-color: rgba(220, 53, 69, 0.1); color: var(--danger); }
+.status-completed .booking-status { background-color: rgba(108, 117, 125, 0.15); color: var(--secondary); }
+
+.booking-actions .btn {
+    font-size: 0.85rem; /* Smaller button text */
+    padding: 0.4em 1em; /* Smaller padding */
+    text-transform: none; /* Normal case */
+    border-radius: calc(var(--radius) * 0.8);
+    min-width: 140px; /* Ensure buttons have some width */
+}
+.btn.destructive-btn {
+    background-color: transparent;
+    border-color: var(--danger, #dc3545); /* Use danger color variable */
+    color: var(--danger, #dc3545);
+}
+
+.btn.destructive-btn:hover {
+    background-color: var(--danger, #dc3545);
+    color: var(--white, #fff);
+    border-color: var(--danger, #dc3545);
+}
+
+/* Adjust spacing if needed */
+.booking-actions .btn + .btn {
+    margin-left: 10px; /* Add space between buttons */
+}
+/* Specific button styles if needed */
+.payout-button { /* Already uses primary-btn */ }
+.view-voucher-button { /* Already uses outline-btn */ }
+.leave-review-button { /* Already uses outline-btn */ }
+
+
+/* --- Responsive --- */
+@media (max-width: 992px) {
+    .account-layout {
+        grid-template-columns: 1fr; /* Stack sidebar and content */
+    }
+    .account-menu {
+        position: static; /* Unstick menu */
+        margin-bottom: 30px;
+    }
+}
+
+@media (max-width: 768px) {
+    .booking-item {
+        grid-template-columns: 1fr; /* Stack everything */
+        text-align: center;
+    }
+    .booking-image {
+        width: 100%;
+        height: 150px; /* Adjust height for stacked view */
+        margin-bottom: 15px;
+    }
+    .booking-status-action {
+        text-align: center;
+        align-items: center; /* Center status/actions */
+        min-height: auto;
+    }
+     .booking-actions {
+        margin-top: 15px;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+     .booking-actions .btn {
+         width: auto; /* Allow button to size naturally */
+         min-width: 120px;
+     }
+}

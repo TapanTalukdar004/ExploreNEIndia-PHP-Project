@@ -1,0 +1,808 @@
+/* css/package-details-static.css */
+
+/* --- Base & Variables --- */
+:root {
+  /* Re-paste your theme variables here if not in universal.css */
+  --navbar-height: 70px; /* Define navbar height - MAKE SURE THIS MATCHES universal.css */
+
+  /* State themes */
+  
+  
+  
+  --background: #18191b;
+  --foreground: #e4e6eb;
+  --card: #242526;
+  --border: #3a3a45;
+  --primary: #4a90e2;
+  --primary-foreground: #ffffff;
+  --muted-foreground: #b0b3b8;
+  --radius: 0.5rem;
+  --secondary: #3a3a45;
+  --secondary-foreground: #e4e6eb;
+  --accent: rgba(74, 144, 226, 0.1);
+  --accent-foreground: #4a90e2;
+  --input: #2a2b2f;
+  --ring: #4a90e2;
+  /* State themes */
+  --state-gradient: linear-gradient(to right, #333, #555);
+  --state-accent: #ffc107;
+  --state-text-color: #ffffff;
+}
+
+/* Include basic icon styling */
+.icon {
+  margin-right: 0.6em;
+  color: var(--primary);
+  width: 1em;
+  height: 1em;
+  line-height: 1;
+  flex-shrink: 0;
+}
+.pd-checklist .icon {
+  font-size: 0.9em;
+  margin-top: 4px;
+}
+.pd-checklist.includes .icon {
+  color: #28a745;
+}
+.pd-checklist.excludes .icon {
+  color: #dc3545;
+}
+.pd-sidebar-why-list .icon {
+  font-size: 0.8em;
+  margin-top: 4px;
+  color: var(--primary);
+}
+.pd-sidebar-info-list .icon {
+  margin-top: 3px;
+  color: var(--muted-foreground);
+  flex-shrink: 0;
+}
+.pd-accordion-trigger .icon {
+  color: var(--muted-foreground);
+  transition: transform 0.3s ease;
+  margin-left: auto; /* Push icon to right */
+  margin-right: 0;
+} /* Remove specific margin */
+
+/* --- State Theme Classes --- */
+.state-theme-default {
+  --state-gradient: linear-gradient(to right, #4a90e2, #357abd);
+  --state-accent: #4a90e2;
+  --state-text-color: #ffffff;
+}
+.state-theme-assam {
+  --state-gradient: linear-gradient(256deg,#294c2d,#012d07,#667137,#414c06);
+  --state-accent: #f0ad4e;
+  --state-text-color: #ffffff;
+}
+.state-theme-meghalaya {
+  --state-gradient: linear-gradient(256deg,#315f5c,#0b2d2c,#022f2d);
+  --state-accent: #66D9E8;
+  --state-text-color: #ffffff;
+}
+.state-theme-arunachal-pradesh {
+  --state-gradient: linear-gradient(256deg,#502b16,#3c2908,#a56c0b);
+  --state-accent: #ffc107;
+  --state-text-color: #ffffff;
+}
+.state-theme-nagaland {
+  --state-gradient: linear-gradient(256deg,#573131,#321515,#440505);
+  --state-accent: #a77223;
+  --state-text-color: #ffffff;
+}
+.state-theme-manipur {
+  --state-gradient: linear-gradient(256deg,#622a69,#411046,#2d0232);
+  --state-accent: #f06595;
+  --state-text-color: #ffffff;
+}
+.state-theme-mizoram {
+  --state-gradient: linear-gradient(to right, #1864ab, #1c7ed6);
+  --state-accent: #74c0fc;
+  --state-text-color: #ffffff;
+}
+.state-theme-tripura {
+  --state-gradient: linear-gradient(to right, #e67700, #f59f00);
+  --state-accent: #ffe066;
+  --state-text-color: #ffffff;
+}
+.state-theme-sikkim {
+  --state-gradient: linear-gradient(256deg,#1a3d5f,#0a2740,#172127);
+  --state-accent: #1460EE;
+  --state-text-color: #ffffff;
+}
+@keyframes gradient-animation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+/* --- Hero Section --- */
+.pd-hero {
+  padding: 80px 0 70px 0; /* Increased padding */
+  background: var(--state-gradient);
+  background-size: 180% 180%;
+  animation: gradient-animation 15s ease infinite;
+  color: var(--state-text-color);
+  position: relative;
+  overflow: hidden;
+  padding-top: calc(80px + var(--navbar-height)); /* Original top padding + navbar height */
+  margin-top: calc(-1 * var(--navbar-height));
+}
+.pd-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url("https://www.transparenttextures.com/patterns/subtle-zebra-3d.png");
+  opacity: 0.05;
+  pointer-events: none;
+}
+.pd-hero-container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 50px;
+  position: relative;
+  z-index: 1;
+  padding: 0 2.5rem;
+} /* Increased gap */
+.pd-hero-content {
+  flex: 1;
+  min-width: 300px;
+}
+.pd-breadcrumbs {
+  font-size: 0.9em;
+  margin-bottom: 18px;
+  opacity: 0.9;
+} /* Increased bottom margin */
+.pd-breadcrumbs a {
+  color: inherit;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+.pd-breadcrumbs a:hover {
+  opacity: 1;
+  text-decoration: underline;
+}
+.pd-hero h1 {
+  font-size: 3em;
+  font-weight: 700;
+  margin-bottom: 20px;
+  line-height: 1.2;
+} /* Increased size/margin */
+.pd-hero-info {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 25px;
+  margin-bottom: 30px;
+  font-size: 1em;
+} /* Increased gaps/margin */
+.pd-hero-info span {
+  display: inline-flex;
+  align-items: center;
+}
+.pd-hero-info .icon {
+  color: var(--state-accent, #ffc107);
+}
+.pd-hero-price-box {
+  background-color: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(3px);
+  border-radius: var(--radius);
+  padding: 18px 25px;
+  margin-bottom: 30px;
+  display: inline-block;
+} /* Increased padding/margin */
+.pd-hero-price-box h2 {
+  font-size: 2em;
+  font-weight: 700;
+  margin: 0 0 8px 0;
+  line-height: 1;
+} /* Increased margin */
+.pd-hero-price-box p {
+  font-size: 0.85em;
+  opacity: 0.8;
+  margin: 0;
+}
+.hero-btn {
+  background-color: var(--state-accent, var(--primary));
+  color: var(--state-text-color, var(--primary-foreground));
+  padding: 14px 35px;
+  font-size: 1.1em;
+  border: 2px solid transparent;
+  margin-left: 2rem;
+} /* Increased padding/size */
+.hero-btn:hover {
+  background-color: transparent;
+  border-color: var(--state-accent, var(--primary));
+  color: var(--state-accent, var(--primary));
+}
+.pd-hero-image-wrapper {
+  flex: 1;
+  min-width: 300px;
+  max-width: 550px;
+  aspect-ratio: 4 / 3;
+  border-radius: calc(var(--radius) * 1.5);
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  position: relative;
+} /* Slightly larger max-width */
+.pd-hero-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.pd-hero-image-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.2) 0%, transparent 50%);
+}
+
+/* --- Main Content Layout --- */
+.pd-main-content-section {
+  padding: 80px 0;
+  background-color: var(--background);
+} /* Increased padding */
+.pd-main-layout {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 50px;
+  padding: 0 2.5rem;
+} /* Increased gap, sidebar width */
+
+/* --- Tabs Area --- */
+.pd-tabs-area {
+}
+.pd-tabs-list {
+  display: flex;
+  gap: 8px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 35px;
+} /* Increased gap/margin */
+.pd-tab-trigger {
+  padding: 14px 22px;
+  background-color: transparent;
+  border: none;
+  border-bottom: 3px solid transparent;
+  color: var(--muted-foreground);
+  font-size: 1.05em;
+  font-weight: 600;
+  cursor: pointer;
+  transition: color 0.2s ease, border-color 0.2s ease;
+  margin-bottom: -1px;
+} /* Increased padding/size */
+.pd-tab-trigger:hover {
+  color: var(--foreground);
+}
+.pd-tab-trigger.active {
+  color: var(--primary);
+  border-bottom-color: var(--primary);
+}
+.pd-tab-content {
+  display: none;
+  animation: fadeIn 0.5s ease-in-out;
+}
+.pd-tab-content.active {
+  display: block;
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.pd-card {
+  background-color: var(--card);
+  padding: 30px;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+} /* Increased padding */
+.pd-card h2 {
+  font-size: 1.6em;
+  font-weight: 700;
+  color: var(--foreground);
+  margin-bottom: 25px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border);
+} /* Increased size/margin, added border */
+.pd-card h3 {
+  font-size: 1.3em;
+  font-weight: 600;
+  color: var(--foreground);
+  margin-top: 30px;
+  margin-bottom: 18px;
+} /* Increased size/margin */
+.pd-separator {
+  border: none;
+  height: 1px;
+  background-color: var(--border);
+  margin: 30px 0;
+} /* Increased margin */
+
+/* Overview Tab Specifics */
+.pd-description {
+  line-height: 1.8;
+  color: var(--muted-foreground);
+  margin-bottom: 30px;
+  font-size: 1.05em;
+} /* Increased spacing/size */
+.pd-includes-excludes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 40px;
+} /* Increased gap */
+.pd-checklist {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+} /* Increased gap */
+.pd-checklist li {
+  display: flex;
+  align-items: flex-start;
+  font-size: 0.95em;
+  color: var(--muted-foreground);
+  line-height: 1.5;
+} /* Increased size */
+.pd-highlights-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 15px;
+  font-size: 0.95em;
+  color: var(--muted-foreground);
+} /* Increased gap/size */
+.pd-highlights-list li {
+  display: flex;
+  align-items: center;
+}
+.pd-highlights-list li::before {
+  content: "";
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: var(--primary);
+  margin-right: 12px;
+  flex-shrink: 0;
+} /* Larger bullet */
+.pd-destinations-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 5px;
+} /* Added top margin */
+.pd-destinations-tags span {
+  background-color: var(--secondary);
+  color: var(--secondary-foreground);
+  padding: 6px 14px;
+  border-radius: 18px;
+  font-size: 0.9em;
+  font-weight: 500;
+} /* Increased padding/size */
+
+/* Itinerary Tab Specifics */
+.pd-notes-box {
+  margin-top: 35px;
+  padding: 18px 25px;
+  background-color: rgba(255, 193, 7, 0.1);
+  border: 1px solid rgba(255, 193, 7, 0.3);
+  border-radius: var(--radius);
+} /* Increased padding/margin */
+.pd-notes-box h3 {
+  color: #ffc107;
+  margin-top: 0;
+  margin-bottom: 12px;
+  font-size: 1.15em;
+} /* Increased size/margin */
+.pd-notes-box ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-size: 0.9em;
+  color: #ffe082;
+} /* Increased gap */
+
+/* Accommodation Tab Specifics */
+.pd-accommodation-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
+} /* Increased gap */
+.pd-accommodation-item {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  background-color: var(--background);
+}
+.pd-accommodation-item img {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  display: block;
+}
+.pd-accommodation-item .content {
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+} /* Increased padding, added gap */
+.pd-accommodation-item h4 {
+  font-size: 1.15em;
+  margin: 0;
+  color: var(--foreground);
+  line-height: 1.3;
+} /* Removed margin */
+.pd-accommodation-item .type-tag {
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+  font-size: 0.75em;
+  padding: 3px 8px;
+  border-radius: 4px;
+  display: inline-block;
+  margin-bottom: 5px;
+}
+.pd-accommodation-item p {
+  font-size: 0.9em;
+  color: var(--muted-foreground);
+  margin: 0;
+  line-height: 1.5;
+}
+.pd-policy-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-size: 0.95em;
+  color: var(--muted-foreground);
+} /* Increased gap/size */
+.pd-policy-list p {
+  margin: 0;
+}
+.pd-policy-list p::before {
+  content: "•";
+  margin-right: 10px;
+}
+
+/* Gallery Tab Specifics */
+.pd-gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 15px;
+} /* Larger items, gap */
+.pd-gallery-item {
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  border-radius: var(--radius);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}
+.pd-gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+.pd-gallery-item img:hover {
+  transform: scale(1.05);
+  filter: brightness(1.1);
+}
+
+/* --- Sidebar --- */
+.pd-sidebar {
+}
+.pd-sidebar-sticky-wrapper {
+  position: sticky;
+  top: calc(var(--navbar-height, 70px) + 30px);
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+} /* Increased top offset and gap */
+.pd-sidebar-card {
+  background-color: var(--card);
+  padding: 25px;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+} /* Increased padding */
+.pd-sidebar-card h3 {
+  font-size: 1.25em;
+  font-weight: 600;
+  color: var(--foreground);
+  margin-top: 0;
+  margin-bottom: 18px;
+} /* Increased size/margin */
+.pd-sidebar-price {
+  font-size: 2.2em;
+  font-weight: 700;
+  color: var(--foreground);
+  margin-bottom: 8px;
+  line-height: 1;
+} /* Increased size/margin */
+
+/* Specific styles for the reordered booking card */
+.pd-sidebar-card .book-now-button {
+  margin-bottom: 10px;
+} /* Space after Book Now */
+.pd-sidebar-price-note {
+  font-size: 0.85em;
+  color: var(--muted-foreground);
+  margin-bottom: 18px;
+} /* Increased bottom margin */
+
+.btn.full-width {
+  width: 100%;
+  margin-bottom: 12px;
+} /* Increased margin */
+.btn.full-width:last-child {
+  margin-bottom: 0;
+}
+
+.pd-sidebar-info-list {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+} /* Increased gap */
+.pd-sidebar-info-list > div {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+} /* Increased gap */
+.pd-sidebar-info-list h4 {
+  font-size: 1em;
+  font-weight: 600;
+  margin: 0 0 4px 0;
+  color: var(--foreground);
+} /* Increased size/margin */
+.pd-sidebar-info-list p {
+  font-size: 0.9em;
+  color: var(--muted-foreground);
+  margin: 0;
+} /* Increased size */
+
+.pd-sidebar-why-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+} /* Increased gap */
+.pd-sidebar-why-list li {
+  display: flex;
+  align-items: flex-start;
+  font-size: 0.95em;
+  color: var(--muted-foreground);
+  line-height: 1.5;
+} /* Increased size */
+
+/* --- Accordion Styling (Generic) --- */
+.pd-accordion {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+} /* Increased gap */
+.pd-accordion-item {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  background-color: var(--background);
+}
+.pd-accordion-trigger {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 18px 25px;
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid transparent;
+  color: var(--foreground);
+  font-size: 1.1em;
+  font-weight: 600;
+  text-align: left;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+} /* Increased padding/size */
+.pd-accordion-trigger:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+.pd-accordion-item.open .pd-accordion-trigger {
+  border-bottom-color: var(--border);
+}
+.pd-accordion-trigger .icon {
+  transition: transform 0.3s ease;
+}
+.pd-accordion-item.open .pd-accordion-trigger .icon {
+  transform: rotate(180deg);
+}
+.pd-accordion-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease-out, padding 0.4s ease-out;
+  padding: 0 25px;
+} /* Increased horizontal padding */
+.pd-accordion-content p {
+  font-size: 0.95em;
+  color: var(--muted-foreground);
+  line-height: 1.7;
+  margin: 0;
+} /* Increased size/line-height */
+.pd-accordion-item.open .pd-accordion-content {
+  max-height: 1000px;
+  padding: 20px 25px 25px 25px;
+  transition: max-height 0.5s ease-in-out, padding 0.5s ease-in-out;
+} /* Increased padding */
+.pd-accordion-content > *:not(:last-child) {
+  margin-bottom: 12px;
+} /* Increased paragraph spacing */
+
+/* --- FAQ Section --- */
+.pd-faq-section {
+  padding: 80px 0;
+  background-color: var(--background);
+} /* Increased padding */
+.pd-section-title {
+  font-size: 2.2em;
+  font-weight: 700;
+  color: var(--foreground);
+  text-align: center;
+  margin-bottom: 50px;
+} /* Increased size/margin */
+.pd-faq-accordion {
+  max-width: 800px;
+  margin: 0 auto;
+  gap: 18px;
+} /* Increased gap */
+.pd-faq-accordion .pd-accordion-item {
+  background-color: var(--card);
+}
+
+/* --- Related Packages Section --- */
+.pd-related-packages {
+  padding: 80px 0;
+  background: var(--state-gradient, linear-gradient(to right, #333, #555));
+  background-size: 180% 180%;
+  animation: gradient-animation 15s ease infinite;
+  color: var(--state-text-color, #ffffff);
+  position: relative;
+} /* Increased padding */
+.pd-related-packages::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url("https://www.transparenttextures.com/patterns/subtle-zebra-3d.png");
+  opacity: 0.05;
+  pointer-events: none;
+}
+.pd-related-packages .pd-section-title {
+  color: inherit;
+  margin-bottom: 0.4rem;
+} /* Increased margin */
+#related-packages-subtitle {
+  font-size: 1.2em;
+  max-width: 700px;
+  margin: 0 auto 35px auto;
+  opacity: 0.9;
+  line-height: 1.6;
+} /* Increased size/margin */
+.btn.related-btn {
+  background-color: rgba(255, 255, 255, 0.9);
+  color: #333;
+  border: 1px solid transparent;
+  padding: 12px 30px;
+  font-size: 1em;
+  margin-top: 1rem;
+} /* Increased padding/size */
+.btn.related-btn:hover {
+  background-color: #ffffff;
+  color: #000;
+}
+.text-center {
+  text-align: center;
+}
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 992px) {
+  .pd-main-layout {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  } /* Stack, adjust gap */
+  .pd-sidebar-sticky-wrapper {
+    position: static;
+  }
+}
+
+@media (max-width: 768px) {
+  .pd-hero h1 {
+    font-size: 2.5em;
+  } /* Adjust size */
+  .pd-hero-info {
+    font-size: 0.9em;
+    gap: 10px 18px;
+  }
+  .pd-tabs-list {
+    overflow-x: auto;
+    white-space: nowrap;
+    padding-bottom: 5px;
+    margin-left: -15px;
+    margin-right: -15px;
+    padding-left: 15px;
+    padding-right: 15px;
+  } /* Allow scroll, adjust padding */
+  .pd-tab-trigger {
+    padding: 12px 18px;
+    font-size: 0.95em;
+  }
+  .pd-card h2 {
+    font-size: 1.4em;
+  }
+  .pd-gallery-grid {
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  } /* Adjust min size */
+  .pd-accordion-trigger {
+    font-size: 1em;
+    padding: 15px 20px;
+  }
+  .pd-section-title {
+    font-size: 1.8em;
+    margin-bottom: 40px;
+  }
+}
+
+@media (max-width: 576px) {
+  .pd-hero h1 {
+    font-size: 2em;
+  }
+  .pd-hero-price-box h2 {
+    font-size: 1.6em;
+  }
+  .hero-btn {
+    padding: 12px 30px;
+    font-size: 1em;
+  }
+  .pd-main-layout {
+    gap: 30px;
+  }
+  .pd-sidebar,
+  .pd-tabs-area {
+    padding: 0;
+  } /* Remove padding if container has it */
+  .pd-card {
+    padding: 20px;
+  }
+  .pd-card h2 {
+    font-size: 1.3em;
+  }
+  .pd-card h3 {
+    font-size: 1.15em;
+  }
+  .pd-gallery-grid {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 8px;
+  }
+  .pd-faq-accordion {
+    gap: 12px;
+  }
+  .pd-related-packages {
+    padding: 60px 0;
+  }
+  #related-packages-subtitle {
+    font-size: 1.1em;
+  }
+}

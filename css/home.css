@@ -1,0 +1,212 @@
+body { background-color: #18191b; }
+.hero {
+    position: relative; /* For positioning children */
+    width: 100%;
+    height: 100vh; /* Full viewport height */
+    background: url('../images/img1.jpg') no-repeat center center/cover; /* Efficient background setup */
+    background-attachment: fixed; /* KEEPS the fixed background effect - REMOVE if you want it to scroll */
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white; /* Default text color */
+    overflow: hidden; /* Good practice to prevent accidental overflow */
+    padding-top: var(--navbar-height); /* Add space for navbar content */
+    margin-top: calc(-1 * var(--navbar-height)); /* Pull the section up */
+}
+
+/* --- Overlay --- */
+.hero .overlay {
+    position: absolute;
+    inset: 0; /* Shorthand for top/right/bottom/left: 0 */
+    background: rgba(15, 16, 23, 0.7); /* Dark semi-transparent overlay */
+    backdrop-filter: blur(2px); /* Frosted glass effect */
+    -webkit-backdrop-filter: blur(2px); /* Safari prefix */
+    z-index: 1; /* Place behind content */
+}
+
+/* --- Centered Content --- */
+.hero-content {
+    position: relative; /* Needed for z-index */
+    z-index: 2; /* Place above overlay */
+    text-align: center;
+    padding: 2em; /* Scalable padding */
+    max-width: 90%; /* Prevent content getting too wide */
+}
+
+/* --- Main Heading --- */
+.hero-content h1 {
+    font-size: 80px;
+    font-family: 'Blacklisted', sans-serif; /* Ensure 'Blacklisted' font is loaded */
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: bold; /* Keep if font file doesn't include weight */
+    white-space: nowrap; /* Prevent wrapping */
+    /* Gradient Text Effect */
+    background-image: linear-gradient(to bottom, rgb(180, 180, 180), transparent);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    /* Animation */
+    position: relative; /* Required for complex text-shadow or pseudo-elements */
+    animation: smokeEffect 4s infinite linear;
+    margin-bottom: 25px; /* Slightly more space below heading */
+}
+
+/* Smoke Animation for Heading */
+@keyframes smokeEffect {
+    0%, 100% {
+        text-shadow: 0 0 1px hsla(0, 0%, 100%, 0.1),
+                     0 0 2px hsla(0, 0%, 100%, 0.1),
+                     0 0 3px hsla(0, 0%, 100%, 0.05);
+    }
+    50% {
+        text-shadow: 0 0 2px hsla(0, 0%, 100%, 0.05),
+                     0 0 3px hsla(0, 0%, 100%, 0.05),
+                     0 0 4px hsla(0, 0%, 100%, 0.03);
+    }
+}
+
+/* --- Subtitle Paragraph --- */
+
+.hero-content p {
+    font-size: 50px;
+    font-family: 'InterTight', sans-serif;
+    font-weight: 500;
+    /* text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.25), -2px -2px 5px rgba(0, 0, 0, 0.3); */
+    line-height: 1.3;
+    white-space: nowrap;
+    opacity: 80%;
+    /* overflow: hidden; */       /* Optional */
+    /* text-overflow: ellipsis; */ /* Optional */
+}
+
+/* --- Styling for the inner spans --- */
+
+.hero-content p span {
+     /* Ensures spans behave correctly for margin */
+     display: inline-block;
+}
+
+/* Add left margin to the second span for spacing */
+.hero-content p span.para2 {
+    margin-left: 30px; /* Adjust this value (e.g., 20px, 1em, 2rem) for desired space */
+}
+
+/* Keep highlight styles */
+.hero-content p span.highlight-yellow {
+    color: yellow;
+}
+.hero-content p span.highlight-blue {
+    color: cyan;
+}
+
+/* --- Keep other hero styles --- */
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 768px) {
+    /* ... other styles ... */
+    .hero-content p {
+        font-size: 30px;
+        white-space: normal; /* Allow wrapping again */
+    }
+    .hero-content p span.para2 {
+        margin-left: 15px; /* Reduce margin on smaller screens if needed */
+    }
+    /* ... */
+}
+
+@media (max-width: 576px) {
+     /* ... other styles ... */
+    .hero-content p {
+        font-size: 22px;
+        line-height: 1.4;
+        white-space: normal; /* Allow wrapping again */
+    }
+     .hero-content p span.para2 {
+        margin-left: 10px; /* Further reduce margin on very small screens */
+    }
+     /* ... */
+}
+
+
+
+
+/* --- Explore Button --- */
+.explore-btn {
+    display: inline-block; /* Good practice for buttons */
+    margin-top: 35px; /* Slightly more space above button */
+    padding: 20px 50px;
+    font-size: 15px;
+    font-weight: bold;
+    color: white;
+    background: rgba(255, 255, 255, 0.2); /* Glass effect background */
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    position: relative; /* For pseudo-element */
+    overflow: hidden; /* Contain effects */
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    transition: background 0.3s ease-in-out, transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; /* Specify transitioned properties */
+    text-transform: uppercase; /* Optional: Match heading style */
+    letter-spacing: 1px; /* Optional: Add slight spacing */
+}
+.explore-btn a {
+    text-decoration: none; /* Remove underline */
+    color: inherit; /* Inherit color from button */
+}
+
+/* Gradient Border Effect (using mask) */
+.explore-btn::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 10px; /* Match button's radius */
+    padding: 2px; /* Border thickness */
+    background: linear-gradient(30deg, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0));
+    -webkit-mask:
+        linear-gradient(#fff 0 0) content-box, /* Mask center */
+        linear-gradient(#fff 0 0); /* Mask outer shape */
+    -webkit-mask-composite: xor; /* Punch out center */
+            mask-composite: exclude; /* Standard property */
+}
+
+/* Button Hover Effect */
+.explore-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateY(-4px); /* Slightly more lift */
+    box-shadow: 0 10px 25px rgba(255, 255, 255, 0.25); /* Enhanced shadow */
+}
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 768px) {
+    .hero-content h1 {
+        font-size: 50px; /* Adjust size */
+        letter-spacing: 4px;
+        white-space: normal; /* Allow wrap */
+    }
+    .hero-content p {
+        font-size: 30px; /* Adjust size */
+    }
+    .explore-btn {
+        padding: 15px 35px;
+        font-size: 14px;
+    }
+    /* .hero{ height: 100vh; } */ /* Already 100vh, no change needed unless you want less */
+}
+
+@media (max-width: 576px) {
+    .hero-content h1 {
+        font-size: 35px; /* Adjust size */
+        letter-spacing: 3px;
+    }
+    .hero-content p {
+        font-size: 22px; /* Adjust size */
+         line-height: 1.4; /* Adjust for smaller text */
+    }
+     .explore-btn {
+        padding: 14px 30px; /* Adjust padding */
+        font-size: 13px;
+    }
+}

@@ -1,0 +1,67 @@
+/* Basic Reset & Box Sizing */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px; /* Adjusted for navbar height */
+}
+
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.6;
+}
+
+/* --- Floating & Fixed Navbar --- */
+header {
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    z-index: 1000;
+    background: rgba(0, 0, 0, 0.7); /* Semi-transparent for floating effect */
+    padding: 10px 2%;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+header:hover {
+    background: rgba(0, 0, 0, 0.9); /* Darker when hovered */
+}
+
+/* Ensure navbar is readable */
+header .nav-links a {
+    color: white;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
+    margin: 0 10px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+header .nav-links a:hover {
+    color: #ffcc00; /* Highlight on hover */
+}
+
+/* Navbar container */
+header .navbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+/* --- Adjust for Floating Navbar --- */
+section {
+    min-height: 100vh;
+    width: 100%;
+    padding: 90px 20px 40px; /* Adjusted padding for navbar space */
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    align-items: center;
+}

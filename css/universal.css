@@ -1,0 +1,322 @@
+/* navbar.css */
+
+:root {
+  /* Keep your existing variables */
+  --white: #ffffff;
+  --primary-text: var(--white);
+  --hover-color: #ffd700;
+  --accent-color: #e74c3c;
+  --navbar-height: 70px;
+  --navbar-padding-vertical-initial: 15px;
+  /* Initial padding */
+  --navbar-padding-vertical-scrolled: 10px;
+  /* Padding when scrolled */
+  /* Define the scrolled background color */
+  --navbar-bg-initial: transparent;
+  /* Make it transparent initially */
+  --navbar-bg-scrolled: #242526;
+  /* Solid color when scrolled */
+  --navbar-shadow-initial: none;
+  /* No shadow initially */
+  --navbar-shadow-scrolled: 0 2px 10px rgba(0, 0, 0, 0.3);
+  /* Shadow when scrolled */
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  line-height: 1.6;
+
+  /* Add padding top to prevent content from hiding behind sticky nav */
+  /* padding-top: var(--navbar-height); */
+}
+
+header.main-header {
+  position: sticky;
+  /* Use sticky for better flow */
+  width: 100%;
+  top: 0;
+  left: 0;
+  padding: var(--navbar-padding-vertical-initial) 45px;
+  /* Use variable */
+  background-color: var(--navbar-bg-initial);
+  /* Use variable */
+  box-shadow: var(--navbar-shadow-initial);
+  /* Use variable */
+  z-index: 1000;
+  min-height: var(--navbar-height);
+  text-align: center;
+  /* Vertically center content */
+  /* Add transitions for smooth changes */
+  transition: background-color 0.3s ease, padding 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+/* Styles WHEN the 'scrolled' class is added by JS */
+header.main-header.scrolled {
+  background-color: var(--navbar-bg-scrolled);
+
+  padding-bottom: var(--navbar-padding-vertical-scrolled);
+
+  padding: 10px 45px !important; /* Use fixed scrolled padding */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3) !important; /* Force shadow */
+}
+
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+  color: var(--primary-text);
+  text-decoration: none;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
+  flex-shrink: 0;
+}
+
+.logo span {
+  background-color: var(--hover-color);
+  color: #202020;
+  padding: 2px 5px;
+  border-radius: 4px;
+  margin-left: 1px;
+  display: inline-block;
+}
+
+.nav-links {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  list-style: none;
+  gap: 40px;
+  margin: 0 20px;
+}
+
+.nav-links li a {
+  color: var(--primary-text);
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: 400;
+  position: relative;
+  padding-bottom: 5px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  transition: color 0.3s ease;
+}
+
+.nav-links li a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 2px;
+  background-color: var(--hover-color);
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 0.3s ease-in-out;
+}
+
+.nav-links li a:hover {
+  color: var(--hover-color);
+}
+
+.nav-links li a:hover::after {
+  transform: scaleX(1);
+}
+
+.btn {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5em 1.5em; /* Adjusted default padding slightly */
+  border-radius: 50px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease,
+    border-color 0.3s ease, transform 0.2s ease;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  border: 2px solid transparent;
+  text-decoration: none; /* Important for anchor tags styled as buttons */
+  flex-shrink: 0;
+  gap: 0.5em; /* Add gap for icon */
+  line-height: 1.4; /* Ensure consistent height */
+}
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+/* --- Action Area --- */
+.nav-action-area {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+/* --- Logged Out Button ('Account') --- */
+.nav-signup-btn {
+  background-color: var(--accent-color); /* Use accent color */
+  color: var(--white);
+  border-color: var(--accent-color);
+}
+.nav-signup-btn:hover {
+  background-color: transparent;
+  color: var(--accent-color);
+  border-color: var(--accent-color);
+}
+
+/* --- Logged In Button (Username) --- */
+/* Apply button styles directly to the anchor */
+.nav-user-account{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.username-btn {
+  background-color: transparent; /* Example: Different initial style */
+  color: var(--primary-text); /* White text */
+  border-color: var(--primary-text); /* White border */
+  text-transform: none; /* Don't uppercase the username */
+  font-weight: 500; /* Normal weight */
+  padding: 0.4em 1.2em; /* Adjust padding if needed */
+}
+.username-btn:hover {
+  background-color: var(--primary-text); /* White background on hover */
+  color: var(
+    --navbar-bg-scrolled
+  ); /* Dark text on hover (use scrolled bg color) */
+  border-color: var(--primary-text);
+}
+.username-btn i {
+  font-size: 1.1em;
+   /* Adjust icon size if needed */
+  /* Icon color will inherit from the anchor's color */
+}
+.username-btn span {
+  /* Style for the username text itself if needed */
+  display: inline-block; /* Ensure it behaves correctly */
+}
+
+/* --- Logout Button (Icon Only) --- */
+.btn-icon {
+  background: none;
+  border: none;
+  color: var(--primary-text); /* White icon */
+  font-size: 1.3rem; /* Make icon slightly larger */
+  padding: 5px; /* Small padding */
+  cursor: pointer;
+  border-radius: 50%;
+  line-height: 1;
+  transition: color 0.3s ease, background-color 0.3s ease;
+}
+.btn-icon:hover {
+  color: var(--hover-color); /* Yellow hover */
+  background-color: rgba(255, 255, 255, 0.1); /* Subtle background hover */
+}
+.logout-btn {
+  /* Any specific styles for logout? */
+}
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 992px) {
+  /* ... existing responsive header/nav styles ... */
+  .username-btn {
+    padding: 0.4em 1em;
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 576px) {
+  /* ... existing responsive header/nav styles ... */
+  .nav-links {
+    display: none;
+  }
+  .nav-signup-btn {
+    display: none;
+  } /* Hide Account button if logged out on small screens? Or adjust */
+  .username-btn {
+    padding: 0.3em 0.8em;
+    font-size: 0.75rem;
+  }
+  .username-btn i {
+    display: none;
+  } /* Optionally hide icon on very small screens */
+  .logout-btn {
+    font-size: 1.2rem;
+  }
+}
+
+/* --- Responsive --- */
+/* (Keep your existing responsive rules, ensure body padding-top adjusts if needed) */
+@media (max-width: 992px) {
+  header.main-header {
+    padding: var(--navbar-padding-vertical-initial) 30px;
+    /* Adjust horizontal padding */
+    min-height: calc(var(--navbar-height) - 10px);
+    /* Adjust height if needed */
+  }
+
+  header.main-header.scrolled {
+    padding: var(--navbar-padding-vertical-scrolled) 30px;
+  }
+
+  body {
+    padding-top: calc(var(--navbar-height) - 10px);
+    /* Match adjusted nav height */
+  }
+
+  .nav-links {
+    gap: 20px;
+  }
+
+  .nav-links li a {
+    font-size: 16px;
+  }
+
+  .nav-action-area {
+    gap: 10px;
+    margin-left: 15px;
+  }
+}
+
+@media (max-width: 576px) {
+  .nav-links {
+    display: none;
+  }
+
+  /* Hide links */
+  header.main-header {
+    padding: var(--navbar-padding-vertical-initial) 15px;
+    min-height: calc(var(--navbar-height) - 15px);
+  }
+
+  header.main-header.scrolled {
+    padding: var(--navbar-padding-vertical-scrolled) 15px;
+  }
+
+  body {
+    padding-top: calc(var(--navbar-height) - 15px);
+  }
+
+  .logo {
+    font-size: 20px;
+  }
+
+  .nav-signup-btn {
+    font-size: 0.75rem;
+    padding: 0.4em 1em;
+  }
+
+  /* Add styles for mobile menu icon if you decide to add one later */
+}

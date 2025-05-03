@@ -1,0 +1,797 @@
+/* ==========================================================================
+   7. Contact Us Section Styles
+   ========================================================================== */
+
+.contact-main-section {
+    min-height: 100vh;
+    /* Full viewport height */
+    /* padding: calc(var(--navbar-height) + 40px) 0 60px 0; */
+    /* Padding top accounts for fixed navbar */
+    background-color: var(--surface-color);
+    /* Use dark theme surface */
+    display: flex;
+    flex-direction: column;
+    /* Stack header, info, form/map */
+    align-items: center;
+    /* Center content horizontally */
+    position: relative;
+    /* For potential absolute elements if needed */
+    overflow: hidden;
+}
+
+.contact-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    padding: 6rem 20px;
+    background: linear-gradient(213deg,#212731,#171d25,#242a2f,#363c42);
+    
+    animation: gradient-animation 9s ease infinite;
+    /* Space between header, info, form/map */
+}
+@keyframes gradient-animation {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+.contact-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.contact-title {
+    /* Uses existing .page-title styles */
+    color: var(--text-heading);
+    font-family: 'Be Vietnam', sans-serif;
+    margin-bottom: 10px;
+    font-size: 3rem;
+    /* Adjust spacing */
+}
+
+.contact-subtitle {
+    /* Uses existing .destination-quote styles */
+    color: var(--text-muted);
+    max-width: 700px;
+    /* Adjust width */
+}
+
+/* --- Contact Info Cards --- */
+.contact-info {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    /* Adjust gap */
+    flex-wrap: wrap;
+    width: 100%;
+    max-width: 1100px;
+    /* Limit width */
+}
+
+.contact-card {
+    background: var(--dark-bg);
+    /* Use main dark bg */
+    padding: 1.5rem;
+    /* Adjust padding */
+    border-radius: 8px;
+    /* Slightly less radius */
+    text-align: center;
+    width: 240px;
+    /* Adjust width */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    /* Darker shadow */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    color: var(--text-color);
+}
+
+.contact-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+.contact-card .icon {
+    width: 55px;
+    /* Adjust size */
+    height: 55px;
+    background: var(--surface-color);
+    /* Invert colors */
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1rem;
+    font-size: 1.4rem;
+    /* Adjust size */
+    color: var(--accent-color);
+    /* Use theme accent */
+    transition: all 0.3s ease;
+}
+
+.contact-card:hover .icon {
+    background: var(--accent-color);
+    color: var(--white);
+    transform: scale(1.1);
+}
+
+.contact-card h3 {
+    color: var(--text-heading);
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+}
+
+.contact-card p {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+/* --- Contact Form & Map --- */
+.contact-form-map {
+    display: flex;
+    width: 100%;
+    max-width: 1100px;
+    /* Match info card width */
+    gap: 2rem;
+    margin-top: 2rem;
+    /* Space above form/map */
+}
+
+.contact-form {
+    flex: 1;
+    /* Take half the space */
+    background: var(--dark-bg);
+    /* Match card background */
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.contact-form h2 {
+    color: var(--text-heading);
+    padding-bottom: 1rem;
+    /* More space */
+    font-size: 1.5rem;
+    text-align: center;
+    border-bottom: 1px solid var(--surface-color);
+    /* Separator */
+    margin-bottom: 1.5rem;
+}
+
+.form-group {
+    margin-bottom: 1.2rem;
+}
+
+/* Adjust spacing */
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    /* Adjust padding */
+    border: 1px solid var(--surface-color);
+    /* Use surface color for border */
+    background-color: var(--surface-color);
+    /* Match slightly lighter bg */
+    border-radius: 5px;
+    font-size: 0.95rem;
+    color: var(--text-color);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: var(--text-muted);
+    opacity: 0.8;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    /* Use theme primary */
+    box-shadow: 0 0 0 3px hsla(var(--primary-color-hue), 30%, 65%, 0.3);
+    /* Glow effect */
+}
+
+.submit-btn {
+    /* Inherits .btn styles */
+    background: var(--primary-color);
+    color: var(--dark-bg);
+    /* Dark text on light primary */
+    border-color: var(--primary-color);
+    width: 100%;
+    /* Full width */
+    padding: 0.8rem;
+    font-size: 1rem;
+}
+
+.submit-btn:hover {
+    background: hsl(var(--primary-color-hue), 35%, 75%);
+    /* Lighter primary on hover */
+    border-color: hsl(var(--primary-color-hue), 35%, 75%);
+    color: var(--dark-bg);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px hsla(var(--primary-color-hue), 30%, 65%, 0.3);
+}
+
+.map-container {
+    flex: 1;
+    /* Take half the space */
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    min-height: 400px;
+    /* Ensure map has height */
+}
+
+.map-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+    filter: grayscale(30%) brightness(90%);
+    /* Optional: Style map for dark theme */
+}
+
+/* ==========================================================================
+   8. Chat Feature Styles
+   ========================================================================== */
+
+.chat-btn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 60px;
+    /* Slightly smaller */
+    height: 60px;
+    background: var(--accent-color);
+    /* Use theme accent */
+    color: var(--white);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.6rem;
+    /* Adjust icon size */
+    cursor: pointer;
+    box-shadow: 0 5px 20px hsla(var(--accent-color-hue), 75%, 60%, 0.4);
+    z-index: 990;
+    /* Below modal overlay */
+    transition: all 0.3s ease;
+    /* Removed bounce animation, can be added back if desired */
+    /* animation: bounce 2s infinite; */
+}
+
+.chat-btn:hover {
+    transform: scale(1.1);
+    background: hsl(var(--accent-color-hue), 80%, 65%);
+    /* Lighter accent */
+}
+
+.chat-popup {
+    position: fixed;
+    bottom: 100px;
+    /* Position above button */
+    right: 30px;
+    width: 340px;
+    /* Adjust width */
+    max-height: 450px;
+    /* Adjust height */
+    background: var(--dark-bg);
+    /* Use dark bg */
+    border-radius: 10px;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+    transform: scale(0.95) translateY(10px);
+    /* Start slightly smaller/lower */
+    opacity: 0;
+    visibility: hidden;
+    transition: transform 0.3s ease, opacity 0.3s ease, visibility 0s linear 0.3s;
+    z-index: 980;
+    /* Below chat button */
+    display: flex;
+    /* Use flex for layout */
+    flex-direction: column;
+}
+
+.chat-popup.active {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+    visibility: visible;
+    transition: transform 0.3s ease, opacity 0.3s ease, visibility 0s linear 0s;
+}
+
+.chat-header {
+    background: var(--surface-color);
+    /* Use surface color */
+    color: var(--text-heading);
+    padding: 0.8rem 1rem;
+    /* Adjust padding */
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    /* Adjust gap */
+    flex-shrink: 0;
+    /* Prevent header shrinking */
+}
+
+.agent-avatar img {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.agent-info h4 {
+    font-size: 0.95rem;
+    font-weight: 600;
+}
+
+.agent-info p {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+}
+
+.close-chat {
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    font-size: 1.6rem;
+    margin-left: auto;
+    cursor: pointer;
+    line-height: 1;
+    transition: color 0.3s ease;
+}
+
+.close-chat:hover {
+    color: var(--text-heading);
+}
+
+.chat-messages {
+    
+    flex-grow: 1;
+    /* Take available space */
+    overflow-y: auto;
+    background-color: var(--dark-bg);
+    /* Ensure background */
+}
+
+.message {
+    margin-bottom: 1rem;
+    max-width: 85%;
+    padding: 0.7rem 1rem;
+    border-radius: 15px;
+    /* More rounded */
+    line-height: 1.4;
+    font-size: 0.9rem;
+    display: flex;
+    /* Use flex for avatar alignment */
+    gap: 0.5rem;
+}
+
+.message.agent {
+    background: var(--surface-color);
+    /* Agent message bg */
+    color: var(--text-color);
+    border-bottom-left-radius: 5px;
+    /* Bubble shape */
+    margin-right: auto;
+    /* Align left */
+}
+
+.message.user {
+    background: var(--accent-color);
+    /* User message bg */
+    color: var(--white);
+    border-bottom-right-radius: 5px;
+    /* Bubble shape */
+    margin-left: auto;
+    /* Align right */
+    flex-direction: row-reverse;
+    /* Move content right */
+}
+
+.message .message-avatar img {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    margin-top: 5px;
+}
+
+.message .message-content {
+    flex-grow: 1;
+}
+
+.chat-input {
+    display: flex;
+    padding: 0.8rem 1rem;
+    background: var(--surface-color);
+    border-top: 1px solid hsl(215, 18%, 30%);
+    /* Separator line */
+    flex-shrink: 0;
+    /* Prevent input shrinking */
+}
+
+.chat-input input {
+    flex: 1;
+    padding: 0.7rem 1rem;
+    border: 1px solid hsl(215, 18%, 30%);
+    background-color: var(--dark-bg);
+    border-radius: 20px;
+    font-size: 0.9rem;
+    color: var(--text-color);
+}
+
+.chat-input input::placeholder {
+    color: var(--text-muted);
+}
+
+.chat-input input:focus {
+    outline: none;
+    border-color: var(--accent-color);
+}
+.chat-categories {
+    padding: 10px 15px 5px 15px; /* Padding around buttons */
+    display: flex;
+    flex-wrap: wrap; /* Allow buttons to wrap */
+    gap: 8px; /* Space between buttons */
+    margin-top: 5px; /* Space after initial message */
+    margin-bottom: 10px;
+    border-bottom: 1px solid var(--border, #3a3a45); /* Separator */
+    padding-bottom: 15px;
+}
+
+.category-btn {
+    display: inline-flex; /* Align icon and text */
+    align-items: center;
+    gap: 6px; /* Space between icon and text */
+    padding: 6px 12px;
+    font-size: 0.85em;
+    font-weight: 500;
+    color: var(--primary, #4a90e2); /* Use primary color */
+    background-color: transparent;
+    border: 1px solid var(--primary, #4a90e2);
+    border-radius: 15px; /* Pill shape */
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.category-btn:hover {
+    background-color: var(--primary, #4a90e2);
+    color: var(--primary-foreground, #fff);
+}
+
+.category-btn .icon {
+    margin-right: 0; /* Remove default icon margin */
+    font-size: 0.9em; /* Slightly smaller icon */
+}
+
+/* Ensure message styling still looks okay */
+.chat-messages {
+    padding: 1rem 1rem 0 1rem; /* Adjust padding if needed */
+    /* ... other chat-messages styles ... */
+}
+
+
+.chat-input button {
+    background: var(--accent-color);
+    color: var(--white);
+    border: none;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    margin-left: 0.5rem;
+    cursor: pointer;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease;
+}
+
+.chat-input button:hover {
+    background-color: hsl(var(--accent-color-hue), 80%, 65%);
+}
+
+/* Typing Indicator */
+.message.typing {
+    background: none;
+    padding: 0;
+    align-items: center;
+}
+
+.typing-dots span {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: var(--text-muted);
+    margin: 0 2px;
+    animation: typingBounce 1.4s infinite ease-in-out both;
+}
+
+.typing-dots span:nth-child(1) {
+    animation-delay: -0.32s;
+}
+
+.typing-dots span:nth-child(2) {
+    animation-delay: -0.16s;
+}
+
+@keyframes typingBounce {
+
+    0%,
+    80%,
+    100% {
+        transform: scale(0);
+    }
+
+    40% {
+        transform: scale(1.0);
+    }
+}
+
+/* ==========================================================================
+   9. Responsive Adjustments (Consolidated)
+   ========================================================================== */
+
+/* --- General Responsive --- */
+/* Combined from previous sections */
+@media (max-width: 992px) {
+    :root {
+        --navbar-height: 60px;
+        --body-padding-top: 60px;
+    }
+
+    .main-header {
+        height: var(--navbar-height);
+        padding: 0 20px;
+    }
+
+    body {
+        padding-top: var(--navbar-height);
+    }
+
+    
+
+    .page-title {
+        font-size: 3.5em;
+    }
+
+    .destinations-container {
+        padding: 20px;
+    }
+
+    .destination-card {
+        width: 220px;
+    }
+
+    .packages-container {
+        padding: 0 30px 30px 30px;
+    }
+
+    .package-card {
+        width: calc(50% - 20px);
+    }
+
+    .about-guide-content {
+        padding: 0 1rem;
+    }
+}
+
+@media (max-width: 870px) {
+    .contact-main-section {
+        min-height: auto;
+        padding: calc(var(--navbar-height) + 30px) 0 40px 0;
+    }
+
+    .contact-form-map {
+        flex-direction: column;
+    }
+
+    .map-container {
+        min-height: 300px;
+    }
+
+    /* Adjust map height */
+    .chat-popup {
+        width: 90%;
+        right: 5%;
+        bottom: 80px;
+        max-height: 400px;
+    }
+
+    .chat-btn {
+        width: 55px;
+        height: 55px;
+        font-size: 1.5rem;
+    }
+
+    /* General Section Responsive */
+    #destinations .page-title,
+    .packages .page-title {
+        font-size: 3em;
+    }
+
+    .destination-card {
+        width: 210px;
+    }
+
+    .about-guide-content {
+        flex-direction: column-reverse;
+        gap: 30px;
+    }
+
+    .guide-image {
+        margin: 0 auto;
+    }
+
+    .about-image-content::after {
+        display: none;
+    }
+
+    .package-card {
+        width: 90%;
+        max-width: 400px;
+    }
+}
+
+@media (max-width: 576px) {
+    :root {
+        --navbar-height: 60px;
+        --body-padding-top: 60px;
+    }
+
+    .main-header {
+        height: var(--navbar-height);
+        padding: 0 15px;
+    }
+
+    .nav-main-actions {
+        top: var(--navbar-height);
+    }
+
+    .logo {
+        font-size: 20px;
+    }
+
+    .nav-signup-btn,
+    .nav-action-area .btn-icon,
+    .nav-action-area .username-link {
+        font-size: 0.75rem;
+        padding: 0.4em 1em;
+    }
+
+    .btn-icon {
+        padding: 6px;
+    }
+
+    .hero-content h1 {
+        font-size: 35px;
+        letter-spacing: 3px;
+        white-space: normal;
+    }
+
+    .hero-content p {
+        font-size: 22px;
+        line-height: 1.4;
+        white-space: normal;
+    }
+
+    .hero-content p span.para2 {
+        margin-left: 10px;
+    }
+
+    .explore-btn {
+        padding: 14px 30px;
+        font-size: 13px;
+    }
+
+    .states-title {
+        font-size: 1.8rem;
+    }
+
+    .states-title span {
+        font-size: 1.4rem;
+    }
+
+    .states-list li {
+        font-size: 0.9rem;
+    }
+
+    .destinations,
+    .packages {
+        padding: 3rem 0;
+    }
+
+    #destinations .page-title,
+    .packages .page-title {
+        font-size: 2.4em;
+    }
+
+    .destination-card {
+        width: 190px;
+    }
+
+    .guide-title {
+        font-size: 2rem;
+        text-align: center;
+    }
+
+    .feature-text h4 {
+        font-size: 1rem;
+    }
+
+    .feature-text p {
+        font-size: 0.9rem;
+    }
+
+    .package-card {
+        width: 90%;
+        max-width: 350px;
+    }
+
+    .load-more-btn {
+        width: 180px;
+        font-size: 0.9rem;
+    }
+
+    .contact-main-section {
+        padding: calc(var(--navbar-height) + 20px) 0 30px 0;
+    }
+
+    .contact-info {
+        gap: 1rem;
+    }
+
+    .contact-card {
+        width: calc(50% - 1rem);
+        padding: 1rem;
+    }
+
+    /* Two cards per row */
+    .contact-form,
+    .map-container {
+        flex-basis: 100%;
+    }
+
+    /* Stack form/map */
+    .contact-form {
+        padding: 1.5rem;
+    }
+
+    .contact-form h2 {
+        font-size: 1.3rem;
+    }
+
+    .chat-popup {
+        bottom: 70px;
+        right: 15px;
+        width: calc(100% - 30px);
+    }
+
+    .chat-btn {
+        width: 50px;
+        height: 50px;
+        font-size: 1.4rem;
+        bottom: 15px;
+        right: 15px;
+    }
+}
+
+@media (max-width: 400px) {
+    .contact-card {
+        width: 100%;
+    }
+
+    /* Stack info cards */
+}

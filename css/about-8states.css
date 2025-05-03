@@ -1,0 +1,283 @@
+/* --- Northeast States Section --- */
+.states-section {
+    padding: 60px 0;
+    background: linear-gradient(270deg, #39424c, #34353a, #000000, #2c2236);
+    
+    animation: gradient-animation 8s ease infinite;
+    /* Use the main dark background */
+    position: relative;
+    overflow: hidden;
+    z-index: 0;
+}
+@keyframes gradient-animation {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+/* --- Section Content Layout --- */
+.states-content {
+    display: flex;
+    align-items: stretch;
+    /* Match column heights */
+    gap: 50px;
+    flex-wrap: wrap;
+    /* Allow wrapping */
+    max-width: 1200px;
+    margin: 0 auto;
+
+}
+
+/* --- Left Side: Text --- */
+.states-text-content {
+    flex: 1 1 50%;
+    /* Take up half the space */
+    min-width: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* Vertically center text block */
+    color: var(--text-color);
+    /* Default text color */
+}
+
+.states-title {
+    font-size: 3rem;
+    /* Slightly smaller than previous title */
+    font-weight: 700;
+    color: var(--text-heading);
+    margin-bottom: 20px;
+    line-height: 1.3;
+}
+
+.states-title span {
+    color: var(--secondary-color);
+    /* Use secondary theme color */
+    font-size: 1.8rem;
+    /* Smaller subtitle */
+    display: block;
+    /* Put on new line */
+    font-weight: 600;
+    margin-top: 5px;
+}
+
+.states-intro {
+    font-size: 1rem;
+    color: var(--text-muted);
+    margin-bottom: 30px;
+    line-height: 1.7;
+    /* Slightly more line height */
+    max-width: 600px;
+    /* Limit width for readability */
+}
+
+.states-list {
+    list-style: none;
+    /* Remove default bullets */
+    padding-left: 0;
+    margin: 0;
+}
+
+.states-list li {
+    font-size: 0.95rem;
+    color: var(--text-color);
+    margin-bottom: 12px;
+    /* Space between items */
+    padding-left: 25px;
+    /* Indent text */
+    position: relative;
+    /* For custom marker */
+}
+
+/* Custom list marker */
+.states-list li::before {
+    content: '✧';
+    /* Sparkle or other unicode character */
+    position: absolute;
+    left: 0;
+    top: 1px;
+    color: var(--primary-color);
+    /* Use primary theme color */
+    font-size: 1.1em;
+    line-height: 1;
+}
+
+.states-list li strong {
+    font-weight: 600;
+    color: var(--text-heading);
+    /* Slightly brighter state name */
+}
+
+/* --- Right Side: Image Slideshow --- */
+.states-image-slideshow {
+    flex: 1 1 45%;
+    /* Take slightly less than half */
+    min-width: 300px;
+    position: relative;
+    /* CRUCIAL for absolute positioning images inside */
+    aspect-ratio: 3 / 4;
+    /* Slightly more vertical than 2:3, adjust if needed */
+    border-radius: 15px;
+    /* Rounded corners for the slideshow area */
+    box-shadow: 0 10px 30px var(--dark-shadow-color);
+    /* Dark theme shadow */
+    overflow: hidden;
+    /* Hide image parts outside the rounded corners */
+}
+
+.slideshow-image {
+    position: absolute;
+    /* Stack all images */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Cover the area */
+    border-radius: inherit;
+    /* Inherit radius from parent */
+    opacity: 0;
+    /* Hide all images initially */
+    /* Animation properties */
+    animation-name: imageCrossfade;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    animation-duration: 28s;
+    /* Total duration: 8 images * 4s per image */
+}
+
+/* --- Slideshow Animation --- */
+/* Animation defines one cycle for *one* image: fade in, stay visible, fade out */
+/* Each image shows for 12.5% (2s / 16s) of the total duration */
+@keyframes imageCrossfade {
+    0% {
+        opacity: 0;
+    }
+
+    /* Start hidden */
+    6.25% {
+        opacity: 1;
+    }
+
+    /* Fade in complete (half of 12.5%) */
+    18.75% {
+        opacity: 1;
+    }
+
+    /* Stay visible until end of slot (6.25 + 12.5) */
+    25% {
+        opacity: 0;
+    }
+
+    /* Fade out complete (half of next 12.5%) */
+    100% {
+        opacity: 0;
+    }
+
+    /* Remain hidden for the rest of the cycle */
+}
+
+/* Apply delays so each image animation starts sequentially */
+.slideshow-image:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.slideshow-image:nth-child(2) {
+    animation-delay: 4s;
+}
+
+/* Starts when image 1 starts fading out */
+.slideshow-image:nth-child(3) {
+    animation-delay: 8s;
+}
+
+.slideshow-image:nth-child(4) {
+    animation-delay: 12s;
+}
+
+.slideshow-image:nth-child(5) {
+    animation-delay: 16s;
+}
+
+.slideshow-image:nth-child(6) {
+    animation-delay: 20s;
+}
+
+.slideshow-image:nth-child(7) {
+    animation-delay: 24s;
+}
+
+.slideshow-image:nth-child(8) {
+    animation-delay: 28s;
+}
+
+/* Ensure first image is visible immediately on load (optional but good UX) */
+/* You might see a brief flash/double image without this if delays are precise */
+/* Alternative: Adjust keyframes/delays slightly */
+.slideshow-image:first-child {
+    opacity: 1;
+    /* Make first image visible initially */
+    /* Apply animation with delay so it doesn't start immediately */
+    /* animation-delay: 0s; */
+    /* Already set above */
+}
+
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 768px) {
+    .states-content {
+        flex-direction: column;
+        /* Stack text above image */
+        gap: 40px;
+        padding: 0 1rem;
+    }
+
+    .states-title {
+        font-size: 2rem;
+        text-align: center;
+    }
+
+    .states-title span {
+        font-size: 1.6rem;
+    }
+
+    .states-intro {
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .states-text-content,
+    .states-image-slideshow {
+        flex-basis: auto;
+        /* Reset flex basis */
+        width: 100%;
+        min-width: auto;
+        max-width: 550px;
+        /* Limit width on mobile */
+        margin-left: auto;
+        /* Center the blocks */
+        margin-right: auto;
+    }
+
+    .states-image-slideshow {
+        aspect-ratio: 4 / 3;
+        /* Maybe less vertical on mobile */
+    }
+
+    .states-list li {
+        font-size: 0.9rem;
+        padding-left: 20px;
+        margin-bottom: 10px;
+    }
+
+    .states-list li::before {
+        font-size: 1em;
+    }
+}

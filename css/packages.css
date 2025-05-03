@@ -1,0 +1,331 @@
+/* --- Packages Section --- */
+#packages { /* Target the section ID */
+    position: relative; /* For overlay */
+    background-image: url('../images/img3.jpg');
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center center;
+    /* background-attachment: fixed;     */
+    color: #fff;
+    min-height: 100vh;
+    padding: 80px 0 60px 0; /* Add padding top/bottom */
+    z-index: 1; /* Base stacking context */
+    overflow-x: hidden; /* Prevent horizontal scroll issues */
+}
+
+/* Blurred Overlay specific to Packages Section */
+#packages::before {
+    content: "";
+    position: absolute; /* Changed from fixed to absolute */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(15, 16, 23, 0.7); /* Darker overlay */
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
+    z-index: -1; /* Behind content but within #packages */
+}
+
+/* Title specific to Packages */
+#packages .page-title {
+    text-align: center;
+    font-family: 'Blacklisted', sans-serif;
+    letter-spacing: 4px;
+    font-size: 4em; /* Adjusted size */
+    margin-top: 20px; /* Relative to section padding */
+    margin-bottom: 20px;
+    color: #fff;
+    position: relative; /* Ensure it's above the pseudo-element */
+    z-index: 1;
+}
+
+/* Quote specific to Packages */
+#packages .destination-quote {
+    text-align: center;
+    font-size: 1.1em; /* Adjusted size */
+    font-weight: 400;
+    color: #e5e5e5e0;
+    max-width: 75%;
+    margin: 0 auto 40px auto; /* MORE bottom margin */
+    font-style: italic;
+    line-height: 1.6;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+    position: relative; /* Ensure it's above the pseudo-element */
+    z-index: 1;
+    padding: 0 20px;
+}
+
+/* Container for the package cards */
+.packages-container {
+    display: flex;
+    justify-content: center;
+    align-items: stretch; /* Make cards same height */
+    flex-wrap: wrap;
+    gap: 40px;
+    padding: 0 40px 40px 40px;
+    max-width: 1400px;
+    margin: 0 auto; /* Center the container */
+    position: relative; /* Ensure cards are above pseudo-element */
+    z-index: 1;
+}
+
+/* Individual Package Card Styling */
+.package-card {
+    background-color: #f0f0f0; /* Light grey background */
+    border-radius: 18px;
+    overflow: hidden;
+    width: 380px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    color: #333; /* Set text color for card content */
+}
+
+.package-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 22px rgba(0, 0, 0, 0.2);
+}
+
+/* Image Container */
+.package-image-container {
+    position: relative;
+    width: 100%;
+    height: 270px;
+}
+
+.package-image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Duration Tag Styling */
+.duration-tag {
+    position: absolute;
+    bottom: 10px; /* Adjusted position slightly */
+    right: 0;
+    background-color: #1abc9c; /* Teal color */
+    color: white;
+    padding: 6px 18px 6px 12px;
+    font-size: 0.85em;
+    font-weight: 600;
+    border-radius: 15px 0 0 15px; /* Rounded left side */
+    box-shadow: -2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Content Area below Image */
+.package-content {
+    padding: 15px 20px 20px 20px; /* Adjusted top padding */
+    flex-grow: 1; /* Allow content to grow */
+    display: flex;
+    flex-direction: column;
+}
+
+/* State Name Styling - Added span in HTML is needed */
+.package-state {
+    font-size: 0.8em;
+    color: #1abc9c;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 3px; /* Adjusted margin */
+    display: block;
+}
+
+/* Package Title Styling - Targeting H2 as per HTML */
+.package-content h2 {
+    font-size: 1.4em;
+    font-weight: 700;
+    color: #2c3e50;
+    margin-bottom: 8px; /* Adjusted margin */
+    line-height: 1.3; /* Adjusted line height */
+}
+
+/* Package Description Styling */
+.package-description {
+    font-size: 0.85em; /* Slightly larger */
+    color: #555;
+    line-height: 1.5;
+    margin-bottom: 15px; /* Adjusted margin */
+    flex-grow: 1; /* Takes available space */
+}
+
+/* Pricing Info Styling */
+.package-pricing {
+    font-size: 0.9em;
+    color: #444;
+    margin-bottom: 20px;
+    border-top: 1px solid #ddd;
+    padding-top: 15px; /* Adjusted padding */
+    margin-top: auto; /* Pushes pricing down if description varies */
+}
+
+.package-pricing span {
+    margin-right: 10px;
+    display: inline-block; /* Ensure spacing works well */
+}
+
+/* Explore Button Styling */
+.explore-package-btn {
+    display: inline-block;
+    background-color: #1abc9c;
+    color: white;
+    border: none;
+    padding: 10px 25px;
+    border-radius: 20px;
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 0.9em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    align-self: flex-start; /* Align button to the left */
+    margin-top: 10px; /* Add space above button */
+}
+.explore-package-btn a{
+    text-decoration: none;
+    color: white;
+}
+
+.explore-package-btn:hover {
+    background-color: #16a085; /* Darker teal */
+}
+
+/* Load More Button Container */
+.load-more-container {
+    text-align: center;
+    margin-top: 40px; /* Increased space */
+    position: relative; /* Ensure it's above pseudo-element */
+    z-index: 1;
+}
+
+/* Load More Button Styling */
+.load-more-btn {
+    width: 250px;
+    padding: 12px 30px;
+    background-color: #f39c12; /* Orange */
+    color: white;
+    border: none;
+    border-radius: 25px;
+    font-size: 1.05em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    display: inline-flex; /* Use inline-flex for content alignment */
+    align-items: center;
+    justify-content: center;
+    gap: 8px; /* Space between text and icon (if added) */
+}
+.load-more-btn a{
+    text-decoration: none;
+    color: white;
+}
+
+/* Style for an icon if you add one (e.g., <i> tag) */
+.load-more-btn i {
+    font-size: 1em; /* Relative to button font size */
+    line-height: 1; /* Ensure proper alignment */
+}
+/* If using an img tag for the icon */
+.load-more-btn img {
+     height: 1em; /* Adjust size as needed */
+     width: auto;
+     vertical-align: middle; /* Helps alignment */
+}
+
+
+.load-more-btn:hover {
+    background-color: #e67e22; /* Darker orange */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    transform: translateY(-2px);
+}
+
+
+/* --- Responsive Packages --- */
+@media (max-width: 1250px) {
+    .packages-container {
+        gap: 30px;
+        padding: 0 30px 40px 30px;
+    }
+    .package-card {
+        width: calc(33.33% - 27px); /* Adjust width for 3 cards */
+        min-width: 300px; /* Prevent cards becoming too narrow */
+    }
+}
+
+@media (max-width: 992px) {
+     #packages .page-title {
+        font-size: 3.5em;
+    }
+     #packages .destination-quote {
+        max-width: 85%;
+    }
+    .package-card {
+        width: calc(50% - 20px); /* Adjust for 2 cards */
+         min-width: 280px;
+    }
+     .packages-container {
+        gap: 30px; /* Keep or adjust gap */
+    }
+}
+
+
+@media (max-width: 768px) {
+    #packages {
+        padding: 60px 0 40px 0;
+    }
+     #packages .page-title {
+        font-size: 3em;
+    }
+     #packages .destination-quote {
+        max-width: 90%;
+        font-size: 1em;
+     }
+    .package-card {
+         /* Stack cards */
+         width: 85%;
+         max-width: 380px; /* Limit max width on small screens */
+    }
+     .packages-container {
+        padding: 0 20px 30px 20px;
+    }
+     .package-image-container {
+        height: 240px; /* Adjust image height */
+    }
+}
+
+@media (max-width: 576px) {
+    #packages .page-title {
+        font-size: 2.5em;
+    }
+    .package-card {
+         width: 90%; /* Slightly wider */
+    }
+     .package-image-container {
+        height: 200px;
+    }
+     .package-content {
+        padding: 15px;
+    }
+    .package-content h2 {
+        font-size: 1.2em;
+    }
+    .package-description {
+        font-size: 0.8em;
+    }
+    .package-pricing {
+        font-size: 0.85em;
+    }
+    .explore-package-btn{
+        font-size: 0.8em;
+        padding: 8px 20px;
+    }
+    .load-more-btn {
+        width: 200px;
+        font-size: 1em;
+        padding: 10px 25px;
+    }
+}

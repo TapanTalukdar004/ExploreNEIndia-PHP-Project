@@ -1,0 +1,404 @@
+/* css/destinations.css */
+
+/* Ensure :root variables from universal.css are available */
+:root {
+  --background: #18191b;
+  --foreground: #e4e6eb;
+  --card: #242526;
+  --border: #3a3a45;
+  --primary: #4a90e2;
+  --muted-foreground: #b0b3b8;
+  --radius: 0.75rem; /* Match shadcn */
+  --card-foreground: var(--foreground);
+  --primary-foreground: #ffffff;
+}
+
+.icon {
+  margin-right: 0.5em;
+  color: var(--primary);
+} /* Basic icon style */
+
+/* --- Page Header --- */
+.page-header.destinations-header-bg {
+  padding: 90px 0 70px 0;
+  background: linear-gradient(rgba(24, 25, 27, 0.85), rgba(24, 25, 27, 0.95)),
+    url("https://images.unsplash.com/photo-1501854140801-50d01698950b?q=80&w=1470")
+      center/cover no-repeat; /* Example generic NE background */
+  color: var(--foreground); /* Light text */
+  text-align: center;
+  padding-top: calc(
+    80px + var(--navbar-height)
+  ); /* Original top padding + navbar height */
+  margin-top: calc(-1 * var(--navbar-height));
+}
+/* Use existing page-title/page-subtitle styles from universal or package css */
+.page-title {
+  font-size: 2.8em;
+  margin-bottom: 15px;
+  font-weight: 700;
+}
+.page-subtitle {
+  font-size: 1.2em;
+  max-width: 700px;
+  margin: 0 auto;
+  color: var(--muted-foreground);
+  opacity: 0.9;
+}
+
+/* --- Destinations List Section --- */
+.destinations-list-section {
+  padding: 60px 0;
+  background-color: var(--background); /* Dark background */
+}
+.dest-section-title {
+  font-size: 2.2em;
+  font-weight: 700;
+  color: var(--foreground);
+  text-align: center;
+  margin-bottom: 40px;
+  position: relative;
+}
+/* Optional underline */
+.dest-section-title::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 3px;
+  background-color: var(--primary);
+  margin: 15px auto 0;
+  border-radius: 2px;
+}
+.dest-section-title.text-left {
+  text-align: left;
+}
+.dest-section-title.text-left::after {
+  margin: 15px 0 0 0;
+}
+
+/* --- Horizontal Scroll --- */
+.destinations-scroll-wrapper {
+  position: relative;
+
+  padding: 0 45px; /* Padding inside wrapper */
+}
+
+.destinations-container {
+  display: flex;
+  gap: 25px; /* Space between cards */
+  overflow-x: auto; /* Enable horizontal scroll */
+  padding: 20px 0px; /* Vertical padding, horizontal padding matches wrapper */
+  scroll-snap-type: x mandatory; /* Snap scrolling */
+  /* Hide scrollbar standard */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE/Edge */
+}
+/* Hide scrollbar Webkit */
+.destinations-container::-webkit-scrollbar {
+  display: none;
+}
+
+/* --- Scroll Buttons --- */
+.scroll-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  background-color: rgba(36, 37, 38, 0.8); /* var(--card) with opacity */
+  color: var(--foreground);
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  font-size: 1.2em;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+  backdrop-filter: blur(3px);
+}
+.scroll-btn:hover {
+  background-color: rgba(58, 58, 69, 0.9); /* Darker on hover */
+  transform: translateY(-50%) scale(1.05);
+}
+#scroll-left-btn {
+  left: 0px;
+} /* Position buttons */
+#scroll-right-btn {
+  right: 0px;
+}
+
+/* --- State Card Styling (Based on StateCard.tsx) --- */
+.state-card-link {
+  text-decoration: none; /* Remove underline from link */
+  color: inherit;
+  display: block; /* Make link fill the card space */
+}
+
+.state-card {
+  position: relative;
+  flex-shrink: 0; /* Prevent cards from shrinking */
+  width: 280px; /* Card width */
+  height: 380px; /* Card height */
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+  scroll-snap-align: start; /* Snap alignment */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.state-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
+}
+
+.state-card-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* Smoother zoom */
+}
+.state-card:hover .state-card-image {
+  transform: scale(1.1);
+}
+
+.state-card-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.1) 0%,
+    rgba(0, 0, 0, 0.3) 50%,
+    rgba(0, 0, 0, 0.85) 100%
+  );
+  z-index: 1;
+}
+
+.state-card-content {
+  position: absolute;
+  inset: 0;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end; /* Align content to bottom */
+  color: var(--white);
+  z-index: 2;
+}
+
+.state-card-title {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.state-card-title .icon {
+  color: var(--white); /* White icon */
+  opacity: 0.8;
+  margin-right: 8px;
+}
+.state-card-title h3 {
+  font-size: 1.4em;
+  font-weight: 600;
+  margin: 0;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+/* Info Container Styling */
+.initial-info,
+.hover-info {
+  transition: opacity 0.3s ease-in-out, transform 0.4s ease-in-out;
+}
+
+.initial-info p {
+  font-size: 0.9em;
+  color: var(--foreground);
+  opacity: 0.9;
+  line-height: 1.5;
+  margin: 0;
+  /* Limit lines */
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Hide hover info by default */
+.hover-info {
+  opacity: 0;
+  transform: translateY(15px); /* Start slightly lower */
+  font-size: 0.85em;
+  margin-top: 10px; /* Space above hover info */
+}
+.hover-info p {
+  margin: 5px 0;
+  color: var(--muted-foreground);
+  line-height: 1.4;
+}
+.hover-info p strong {
+  color: var(--foreground);
+  font-weight: 600;
+}
+
+.explore-prompt {
+  display: inline-flex;
+  align-items: center;
+  margin-top: 10px;
+  color: var(--primary); /* Use primary color */
+  font-weight: 600;
+  transition: color 0.2s ease;
+}
+.explore-prompt .icon {
+  color: var(--primary);
+  margin-left: 5px;
+  font-size: 0.9em;
+}
+.state-card:hover .explore-prompt {
+  color: var(--white); /* Change color on hover */
+}
+.state-card:hover .explore-prompt .icon {
+  color: var(--white);
+}
+
+/* Hover State Transitions */
+.state-card:hover .initial-info {
+  opacity: 0;
+  transform: translateY(-10px); /* Move up slightly */
+}
+.state-card:hover .hover-info {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* --- About Northeast Section --- */
+.about-northeast-section {
+  padding: 80px 20px;
+  background-color: var(--card); /* Use card background for contrast */
+}
+.about-ne-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive */
+  gap: 30px;
+  align-items: center;
+}
+.about-ne-text h2 {
+  margin-bottom: 30px; /* More space below title */
+}
+.about-ne-text p {
+  font-size: 1em;
+  color: var(--muted-foreground);
+  margin-bottom: 15px;
+  line-height: 1.7;
+}
+.about-ne-images {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+}
+.about-ne-img-item {
+  aspect-ratio: 1 / 1; /* Square images */
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+.about-ne-img-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s ease;
+}
+.about-ne-img-item:hover img {
+  transform: scale(1.05);
+}
+/* Stagger effect like in React project */
+.about-ne-img-item:nth-child(2),
+.about-ne-img-item:nth-child(4) {
+  margin-top: 25px; /* Adjust as needed */
+}
+
+/* --- Responsive --- */
+@media (max-width: 992px) {
+  .scroll-btn {
+    width: 40px;
+    height: 40px;
+    font-size: 1em;
+  }
+  #scroll-left-btn {
+    left: 15px;
+  }
+  #scroll-right-btn {
+    right: 15px;
+  }
+  .state-card {
+    width: 260px;
+    height: 360px;
+  }
+  .about-ne-content {
+    gap: 30px;
+  }
+  .destinations-scroll-wrapper {
+    padding: 0 35px; /* Reduce padding for buttons */
+  }
+  #scroll-left-btn {
+    left: -5px;
+  } /* Slight overlap if needed */
+  #scroll-right-btn {
+    right: -5px;
+  }
+}
+
+@media (max-width: 768px) {
+  .destinations-list-section {
+    padding: 40px 0;
+  }
+  .dest-section-title {
+    font-size: 1.8em;
+    margin-bottom: 30px;
+  }
+  .scroll-btn {
+    display: none;
+  } /* Hide scroll buttons on mobile, rely on touch scroll */
+  .destinations-scroll-wrapper {
+    margin: 0;
+    padding: 0;
+  } /* Remove overhang */
+  .destinations-container {
+    gap: 15px;
+    padding: 15px; /* Adjust padding/gap */
+    scroll-snap-type: none;
+  } /* Disable snap on mobile maybe */
+  .state-card {
+    width: 220px;
+    height: 320px;
+  } /* Smaller cards */
+  .state-card-title h3 {
+    font-size: 1.2em;
+  }
+  .initial-info p {
+    font-size: 0.85em;
+  }
+  .hover-info {
+    font-size: 0.8em;
+  }
+
+  .about-northeast-section {
+    padding: 60px 0;
+  }
+  .about-ne-content {
+    grid-template-columns: 1fr;
+  } /* Stack text and images */
+  .about-ne-images {
+    margin-top: 30px;
+  }
+  .scroll-btn {
+    display: none;
+  }
+  .destinations-scroll-wrapper {
+    padding: 0;
+  } /* No padding needed if buttons hidden */
+  .destinations-container {
+    padding: 15px;
+  }
+}

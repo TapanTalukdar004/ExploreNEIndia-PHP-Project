@@ -1,0 +1,317 @@
+/* --- CSS Variables (Dark Theme - Keep These) --- */
+:root {
+    /* Dark Backgrounds */
+    --dark-bg: hsl(215, 20%, 16%);
+    /* Main deep blue/charcoal background */
+    --surface-color: hsla(0, 0%, 12%, 0.867);
+    /* Slightly lighter surface for sections/cards */
+    --dark-shadow-color: hsla(0, 0%, 0%, 0.3);
+    /* Darker shadow for depth */
+    --light-shadow-color: hsla(0, 0%, 100%, 0.05);
+    /* Subtle light shadow/highlight */
+
+    /* Light Text */
+    --text-color: hsl(210, 15%, 88%);
+    /* Main light text (off-white) */
+    --text-muted: hsl(210, 10%, 70%);
+    /* Dimmer text for paragraphs */
+    --text-heading: hsl(0, 0%, 100%);
+    /* Pure white for strong headings */
+
+    /* Accent Colors (Keep existing or adjust saturation/lightness if needed) */
+    --primary-color-hue: 152;
+    /* Keeping hue of original green */
+    --primary-color: hsl(var(--primary-color-hue), 30%, 65%);
+    /* Lighter green for dark theme */
+    --secondary-color-hue: 47;
+    /* Keeping hue of original yellow/gold */
+    --secondary-color: hsl(var(--secondary-color-hue), 75%, 65%);
+    /* Bright gold/yellow */
+    --accent-color-hue: 16;
+    /* Keeping hue of original orange/terracotta */
+    --accent-color: hsl(var(--accent-color-hue), 75%, 60%);
+    /* Vibrant terracotta */
+
+    /* Other */
+    --white: #ffffff;
+}
+
+/* --- About / Guide Section --- */
+.about-guide-section {
+
+    padding: 60px 0;
+    /* Vertical padding - REVERTED to original */
+    background: linear-gradient(241deg,#212020,#1e2b3a,#141d19,#0e110e);
+    background-size: 180% 180%;
+    animation: gradient-animation 9s ease infinite;
+    /* Dark Theme surface */
+    position: relative;
+    overflow: hidden;
+    z-index: 0;
+}
+
+@keyframes gradient-animation {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* --- Decorative Blobs (Size/Position Reverted, Appearance Adjusted for Dark) --- */
+.about-guide-section::before,
+.about-guide-section::after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    z-index: -1;
+    filter: blur(90px);
+    /* Keep slightly more blur for dark */
+    opacity: 0.35;
+    /* Keep adjusted opacity for dark */
+    animation: pulseBlob 18s infinite alternate ease-in-out;
+    /* Keep slower animation */
+}
+
+.about-guide-section::before {
+    width: 400px;
+    /* REVERTED size */
+    height: 400px;
+    /* REVERTED size */
+    /* Adjusted gradient for dark theme */
+    background: radial-gradient(circle, hsla(var(--primary-color-hue), 40%, 55%, 0.4), transparent 70%);
+    top: -100px;
+    /* REVERTED position */
+    left: -150px;
+    /* REVERTED position */
+}
+
+.about-guide-section::after {
+    width: 350px;
+    /* REVERTED size */
+    height: 350px;
+    /* REVERTED size */
+    /* Adjusted gradient for dark theme */
+    background: radial-gradient(circle, hsla(var(--accent-color-hue), 50%, 60%, 0.35), transparent 70%);
+    bottom: -80px;
+    /* REVERTED position */
+    right: -120px;
+    /* REVERTED position */
+    animation-delay: -9s;
+    /* Keep adjusted delay */
+}
+
+@keyframes pulseBlob {
+
+    /* Keep adjusted animation details */
+    0% {
+        transform: scale(0.95) translate(5px, -5px);
+        opacity: 0.3;
+    }
+
+    100% {
+        transform: scale(1.05) translate(-5px, 5px);
+        opacity: 0.45;
+    }
+}
+
+/* --- Section Content Layout --- */
+.about-guide-content {
+    display: flex;
+    align-items: stretch;
+    gap: 50px;
+    /* REVERTED gap */
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+/* --- Left Side: Text --- */
+.about-text-content {
+    flex: 1 1 50%;
+    min-width: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.guide-title {
+    font-size: 2.5rem;
+    /* Original size */
+    font-weight: 700;
+    color: var(--text-heading);
+    /* Dark theme color */
+    margin-bottom: 30px;
+    /* REVERTED margin */
+    line-height: 1.3;
+}
+
+.guide-title span {
+    color: var(--accent-color);
+    /* Dark theme color */
+}
+
+.features-list {
+    margin-top: 20px;
+    display: grid;
+    gap: 25px;
+    /* REVERTED gap */
+}
+
+.feature-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    /* REVERTED gap */
+}
+
+.feature-icon {
+    font-size: 1.8rem;
+    /* REVERTED size */
+    color: var(--accent-color);
+    /* Dark theme color */
+    margin-top: 5px;
+    /* Original alignment */
+    flex-shrink: 0;
+    width: 35px;
+    /* REVERTED width */
+    text-align: center;
+}
+
+.feature-text h4 {
+    font-size: 1.1rem;
+    /* REVERTED size */
+    font-weight: 600;
+    color: var(--text-color);
+    /* Dark theme color */
+    margin-top: 0;
+    margin-bottom: 5px;
+}
+
+.feature-text p {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    /* Dark theme color */
+    margin: 0;
+    line-height: 1.6;
+    /* Keep slightly increased line height for readability */
+}
+
+/* --- Right Side: Image --- */
+.about-image-content {
+    position: relative;
+    flex: 1 1 45%;
+    min-width: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Main image styling */
+.guide-image {
+    width: 90%;
+    height: auto;
+    display: block;
+    border-radius: 15px;
+    object-fit: cover;
+    aspect-ratio: 2 / 3;
+    /* Dark theme shadow */
+    box-shadow: 0 10px 25px var(--dark-shadow-color),
+        inset 0 0 15px hsla(0, 0%, 0%, 0.2);
+    transition: transform 0.4s ease, filter 0.4s ease, box-shadow 0.4s ease;
+    position: relative;
+    z-index: 2;
+}
+
+/* Overlay image styling */
+.about-image-content::after {
+    content: '';
+    position: absolute;
+    z-index: 1;
+    width: 120px;
+    height: 180px;
+    background-image: url('images/overlay-texture.png');
+    /* !! REPLACE !! */
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-radius: 10px;
+    /* Dark theme shadow */
+    box-shadow: 0 6px 15px var(--dark-shadow-color);
+    opacity: 0.75;
+    /* Keep dark theme opacity */
+    right: -20px;
+    /* Original position */
+    bottom: -30px;
+    /* Original position */
+    transition: transform 0.4s ease, opacity 0.4s ease, box-shadow 0.4s ease;
+    filter: brightness(0.9);
+    /* Keep dark theme filter */
+}
+
+/* --- Hover Effects (Keep Dark Theme Adjustments) --- */
+.guide-image:hover {
+    transform: scale(1.03) translate(-2px, -2px);
+    filter: brightness(1.1);
+    box-shadow: 0 14px 35px hsla(0, 0%, 0%, 0.4),
+        inset 0 0 5px hsla(0, 0%, 0%, 0.1);
+    cursor: pointer;
+}
+
+.about-image-content:hover .guide-image {
+    transform: scale(1.02) translate(-1px, -1px);
+}
+
+.about-image-content:hover::after {
+    transform: translate(5px, 5px) scale(1.02);
+    opacity: 0.9;
+    box-shadow: 0 8px 20px hsla(0, 0%, 0%, 0.35);
+    filter: brightness(1);
+}
+
+/* --- Responsive Adjustments (Keep as they mostly handle layout flow) --- */
+@media (max-width: 768px) {
+    .about-guide-content {
+        flex-direction: column-reverse;
+        gap: 40px;
+        align-items: center;
+        padding: 0 1rem;
+    }
+
+    .guide-title {
+        font-size: 2rem;
+        text-align: center;
+    }
+
+    .about-text-content,
+    .about-image-content {
+        flex-basis: auto;
+        width: 100%;
+        min-width: auto;
+        max-width: 500px;
+    }
+
+    .about-image-content {
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 0;
+    }
+
+    .guide-image {
+        width: 90%;
+        max-width: 350px;
+        /* Dark theme shadow for mobile */
+        box-shadow: 0 8px 20px var(--dark-shadow-color),
+            inset 0 0 10px hsla(0, 0%, 0%, 0.2);
+    }
+
+    .about-image-content::after {
+        display: none;
+    }
+}

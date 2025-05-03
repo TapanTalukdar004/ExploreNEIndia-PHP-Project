@@ -1,0 +1,293 @@
+/* --- ADD CSS Variables (Recommended) --- */
+:root {
+    --white: #ffffff;
+    --primary-text: var(--white);
+    /* Nav text color */
+    --hover-color: #FFD700;
+    /* Yellow */
+    --accent-color: #e74c3c;
+    /* Example accent for button */
+    --dark-bg: hsl(215, 20%, 16%);
+    /* Example dark bg for scrolled header */
+    --navbar-height: 70px;
+    /* Define navbar height */
+    --body-padding-top: var(--navbar-height);
+    /* Default padding for fixed header */
+}
+
+/* --- Basic Reset & Body --- */
+/* Keep Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Keep Body, Ensure padding-top is set */
+body {
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.6;
+    /* color: #333; */
+    /* Adjust if dark theme default */
+    /* padding-top: var(--body-padding-top); */
+    /* Space for fixed header */
+}
+
+/* --- Header & Navigation (Simplified) --- */
+header.main-header {
+    /* Added class selector */
+    position: absolute;
+    /* Keep fixed */
+    width: 100%;
+    top: 0;
+    left: 0;
+    padding: 15px 50px;
+    background: transparent;
+    z-index: 1000;
+    transition: background-color 0.3s ease;
+    /*  display: flex; */
+    /* align-items: center; */
+    min-height: var(--navbar-height); 
+}
+
+/* header.main-header.scrolled {
+    /* Keep scrolled state */
+    /* background-color: var(--dark-bg); */
+    /* box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3); */
+/* } */
+
+.navbar-container {
+    display: flex;
+    justify-content: space-between;
+    /* Logo left, Links/Action right */
+    align-items: center;
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.logo {
+    /* Keep logo styles */
+    font-size: 24px;
+    font-weight: bold;
+    color: var(--primary-text);
+    text-decoration: none;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
+    flex-shrink: 0;
+}
+
+.logo span {
+    /* Keep logo span styles */
+    background-color: var(--hover-color);
+    color: #202020;
+    padding: 2px 5px;
+    border-radius: 4px;
+    margin-left: 1px;
+    display: inline-block;
+}
+
+/* REMOVE .nav-main-actions wrapper style */
+
+.nav-links {
+    /* Keep nav links styles */
+    display: flex;
+    /* Ensure links are visible */
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+    gap: 40px;
+    margin: 0 20px;
+    /* Margin between links and action */
+}
+
+.nav-links li a {
+    /* Keep link item styles */
+    color: var(--primary-text);
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 400;
+    position: relative;
+    padding-bottom: 5px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    transition: color 0.3s ease;
+}
+
+.nav-links li a::after {
+    /* Keep link hover underline styles */
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 2px;
+    background-color: var(--hover-color);
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform 0.3s ease-in-out;
+}
+
+.nav-links li a:hover {
+    color: var(--hover-color);
+}
+
+.nav-links li a:hover::after {
+    transform: scaleX(1);
+}
+
+/* Keep Base Button Style */
+.btn {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.5em 1.8em;
+    border-radius: 50px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, transform 0.2s ease;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    border: 2px solid transparent;
+    text-decoration: none;
+    flex-shrink: 0;
+    /* Prevent button shrinking */
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+}
+
+/* --- Action Area (Signup/Login or User Info) --- */
+.nav-action-area {
+    /* Keep styles */
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    /* No margin-left needed with space-between on container */
+}
+
+.nav-signup-btn {
+    /* Keep signup button styles */
+    background-color: var(--accent-color);
+    color: var(--white);
+    border-color: var(--accent-color);
+    font-size: 0.85rem;
+    padding: 0.5em 1.2em;
+}
+
+.nav-signup-btn:hover {
+    background-color: transparent;
+    color: var(--accent-color);
+    border-color: var(--accent-color);
+}
+
+.nav-user-account {
+    /* Keep styles */
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.username-link {
+    /* Keep styles */
+}
+
+.username-link i {
+    /* Keep styles */
+}
+
+.username-link:hover {
+    /* Keep styles */
+}
+
+.btn-icon {
+    /* Keep styles */
+}
+
+.btn-icon:hover {
+    /* Keep styles */
+}
+
+.logout-btn {
+    /* Keep styles */
+}
+
+
+/* --- REMOVE Mobile Menu Icon Styles --- */
+/* Delete the .menu-icon { ... } rule */
+
+/* --- REMOVE Responsive Rules for Mobile Menu --- */
+/* Delete or comment out the @media (max-width: 992px) block OR */
+/* remove the parts inside it that hide .nav-links and show .menu-icon */
+/* Example - Keep the media query but remove menu logic: */
+@media (max-width: 992px) {
+
+    /* Links and action area will wrap or shrink based on available space */
+    /* You might need to adjust gaps/font sizes here if needed */
+    header {
+        padding: 0 30px;
+        min-height: calc(var(--navbar-height) - 10px);
+    }
+
+    body {
+        padding-top: calc(var(--navbar-height) - 10px);
+    }
+
+    .nav-links {
+        gap: 20px;
+    }
+
+    /* Reduce gap */
+    .nav-links li a {
+        font-size: 16px;
+    }
+
+    /* Slightly smaller */
+    .nav-action-area {
+        gap: 10px;
+        margin-left: 15px;
+    }
+}
+
+@media (max-width: 576px) {
+
+    /* Further simplify or hide links if needed */
+    .nav-links {
+        display: none;
+    }
+
+    /* Example: Hide links entirely on very small screens */
+
+    header {
+        padding: 0 15px;
+        min-height: calc(var(--navbar-height) - 15px);
+    }
+
+    body {
+        padding-top: calc(var(--navbar-height) - 15px);
+    }
+
+    .logo {
+        font-size: 20px;
+    }
+
+    /* Styles for action area on small screens */
+    .nav-signup-btn {
+        font-size: 0.75rem;
+        padding: 0.4em 1em;
+    }
+
+    .username-link {
+        font-size: 0.85rem;
+        padding: 4px 8px;
+        gap: 5px;
+    }
+
+    .username-link i {
+        font-size: 1.1em;
+    }
+
+    .btn-icon {
+        font-size: 1.1rem;
+        padding: 6px;
+    }
+}

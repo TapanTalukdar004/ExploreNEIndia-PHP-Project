@@ -1,0 +1,727 @@
+
+
+/* --- Base & Variables --- */
+/* Make sure theme variables are defined in universal.css or here */
+:root {
+  /* Ensure your theme variables like --primary, --card, --border etc. exist */
+  --background: #18191b;
+  --foreground: #e4e6eb;
+  --card: #242526;
+  --border: #3a3a45;
+  --primary: #4a90e2;
+  --primary-foreground: #ffffff;
+  --muted-foreground: #b0b3b8;
+  --radius: 0.5rem;
+}
+
+/* Basic icon styling */
+.icon {
+  margin-right: 0.5em;
+  color: var(--primary);
+}
+.pd-checklist .icon {
+  font-size: 0.9em;
+  margin-top: 4px;
+}
+.pd-checklist.includes .icon {
+  color: #28a745;
+} /* Green check */
+.pd-checklist.excludes .icon {
+  color: #dc3545;
+} /* Red cross */
+
+/* --- State Theme Classes (Added by JS) --- */
+/* Define styles for EACH state using these classes on the body/main container */
+.state-theme-default {
+  --state-gradient: linear-gradient(to right, #4a90e2, #357abd);
+  --state-accent: #4a90e2;
+  --state-text-color: #ffffff;
+}
+.state-theme-assam {
+  --state-gradient: linear-gradient(to right, #1e6b34, #28a745);
+  --state-accent: #f0ad4e;
+  --state-text-color: #ffffff;
+}
+.state-theme-meghalaya {
+  --state-gradient: linear-gradient(to right, #0b7285, #15aabf);
+  --state-accent: #66d9e8;
+  --state-text-color: #ffffff;
+}
+.state-theme-arunachal-pradesh {
+  --state-gradient: linear-gradient(to right, #d9480f, #f76707);
+  --state-accent: #ffc107;
+  --state-text-color: #ffffff;
+}
+.state-theme-nagaland {
+  --state-gradient: linear-gradient(to right, #c92a2a, #fa5252);
+  --state-accent: #ffc107;
+  --state-text-color: #ffffff;
+}
+.state-theme-manipur {
+  --state-gradient: linear-gradient(to right, #862e9c, #ae3ec9);
+  --state-accent: #f06595;
+  --state-text-color: #ffffff;
+}
+.state-theme-mizoram {
+  --state-gradient: linear-gradient(to right, #1864ab, #1c7ed6);
+  --state-accent: #74c0fc;
+  --state-text-color: #ffffff;
+}
+.state-theme-tripura {
+  --state-gradient: linear-gradient(to right, #e67700, #f59f00);
+  --state-accent: #ffe066;
+  --state-text-color: #ffffff;
+}
+.state-theme-sikkim {
+  --state-gradient: linear-gradient(to right, #364fc7, #4263eb);
+  --state-accent: #91a7ff;
+  --state-text-color: #ffffff;
+}
+
+/* --- Hero Section --- */
+.pd-hero {
+  padding: 60px 0; /* Reduced padding */
+  background: var(
+    --state-gradient,
+    linear-gradient(to right, #333, #555)
+  ); /* Use state gradient, fallback */
+  color: var(--state-text-color, #ffffff);
+  position: relative;
+  overflow: hidden; /* Contain potential pseudo-elements */
+  /* Add pattern if needed */
+  /* background-image: var(--state-gradient), url('pattern.png'); */
+}
+/* Optional: Add subtle pattern overlay */
+.pd-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url("https://www.transparenttextures.com/patterns/subtle-zebra-3d.png"); /* Example pattern */
+  opacity: 0.05;
+  pointer-events: none;
+}
+
+.pd-hero-container {
+  display: flex;
+  flex-wrap: wrap; /* Allow wrapping on smaller screens */
+  align-items: center;
+  gap: 40px;
+  position: relative; /* For z-index context if needed */
+  z-index: 1;
+}
+
+.pd-hero-content {
+  flex: 1;
+  min-width: 300px; /* Prevent content getting too squished */
+}
+
+.pd-breadcrumbs {
+  font-size: 0.85em;
+  margin-bottom: 15px;
+  opacity: 0.8;
+}
+.pd-breadcrumbs a {
+  color: inherit; /* Inherit from --state-text-color */
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+.pd-breadcrumbs a:hover {
+  opacity: 1;
+  text-decoration: underline;
+}
+
+#package-title {
+  font-size: 2.8em;
+  font-weight: 700;
+  margin-bottom: 15px;
+  line-height: 1.2;
+}
+
+.pd-hero-info {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 20px; /* Row and column gap */
+  margin-bottom: 25px;
+  font-size: 0.95em;
+}
+.pd-hero-info span {
+  display: inline-flex;
+  align-items: center;
+}
+.pd-hero-info .icon {
+  color: var(--state-accent, #ffc107); /* Use state accent, fallback yellow */
+  margin-right: 6px;
+}
+
+.pd-hero-price-box {
+  background-color: rgba(255, 255, 255, 0.1); /* Subtle highlight */
+  backdrop-filter: blur(3px);
+  border-radius: var(--radius);
+  padding: 15px 20px;
+  margin-bottom: 25px;
+  display: inline-block; /* Fit content */
+}
+#package-price {
+  font-size: 1.8em;
+  font-weight: 700;
+  margin: 0 0 5px 0;
+  line-height: 1;
+}
+.pd-hero-price-box p {
+  font-size: 0.8em;
+  opacity: 0.8;
+  margin: 0;
+}
+
+.hero-btn {
+  /* Use state accent color */
+  background-color: var(--state-accent, var(--primary));
+  color: var(--state-text-color, var(--primary-foreground));
+  padding: 12px 30px;
+  font-size: 1.1em;
+  border: 2px solid transparent;
+}
+.hero-btn:hover {
+  background-color: transparent;
+  border-color: var(--state-accent, var(--primary));
+  color: var(--state-accent, var(--primary));
+}
+
+.pd-hero-image-wrapper {
+  flex: 1;
+  min-width: 300px;
+  max-width: 500px; /* Limit image size */
+  aspect-ratio: 4 / 3; /* Maintain aspect ratio */
+  border-radius: calc(var(--radius) * 1.5);
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  position: relative; /* For overlay */
+}
+.pd-hero-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block; /* Remove extra space below image */
+}
+.pd-hero-image-overlay {
+  /* Optional subtle gradient */
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.2) 0%, transparent 50%);
+}
+
+/* --- Main Content Layout --- */
+.pd-main-content-section {
+  padding: 60px 0;
+  background-color: var(--background);
+}
+.pd-main-layout {
+  display: grid;
+  grid-template-columns: 1fr 320px; /* Main content and sidebar */
+  gap: 40px;
+}
+
+/* --- Tabs Area --- */
+
+.pd-tabs-list {
+  display: flex;
+  gap: 5px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 30px;
+}
+.pd-tab-trigger {
+  padding: 12px 20px;
+  background-color: transparent;
+  border: none;
+  border-bottom: 3px solid transparent; /* Placeholder for active border */
+  color: var(--muted-foreground);
+  font-size: 1em;
+  font-weight: 600;
+  cursor: pointer;
+  transition: color 0.2s ease, border-color 0.2s ease;
+  margin-bottom: -1px; /* Overlap container border */
+}
+.pd-tab-trigger:hover {
+  color: var(--foreground);
+}
+.pd-tab-trigger.active {
+  color: var(--primary);
+  border-bottom-color: var(--primary);
+}
+
+.pd-tab-content {
+  display: none; /* Hidden by default */
+  animation: fadeIn 0.5s ease-in-out;
+}
+.pd-tab-content.active {
+  display: block; /* Show active tab */
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.pd-card {
+  /* Styling for content inside tabs */
+  background-color: var(--card);
+  padding: 25px;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+}
+.pd-card h2 {
+  font-size: 1.5em;
+  font-weight: 700;
+  color: var(--foreground);
+  margin-bottom: 20px;
+}
+.pd-card h3 {
+  font-size: 1.2em;
+  font-weight: 600;
+  color: var(--foreground);
+  margin-top: 25px;
+  margin-bottom: 15px;
+}
+.pd-separator {
+  border: none;
+  height: 1px;
+  background-color: var(--border);
+  margin: 25px 0;
+}
+
+/* Overview Tab Specifics */
+.pd-description {
+  line-height: 1.7;
+  color: var(--muted-foreground);
+  margin-bottom: 25px;
+}
+.pd-includes-excludes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+}
+.pd-checklist {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.pd-checklist li {
+  display: flex;
+  align-items: flex-start; /* Align icon with text */
+  font-size: 0.9em;
+  color: var(--muted-foreground);
+}
+
+.pd-highlights-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 10px;
+  font-size: 0.9em;
+  color: var(--muted-foreground);
+}
+.pd-highlights-list li {
+  display: flex;
+  align-items: center;
+}
+.pd-highlights-list li::before {
+  /* Custom bullet */
+  content: "";
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--primary);
+  margin-right: 10px;
+  flex-shrink: 0;
+}
+
+.pd-destinations-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.pd-destinations-tags span {
+  background-color: var(--secondary);
+  color: var(--secondary-foreground);
+  padding: 5px 12px;
+  border-radius: 15px;
+  font-size: 0.85em;
+  font-weight: 500;
+}
+
+/* Itinerary Tab Specifics */
+.pd-notes-box {
+  margin-top: 30px;
+  padding: 15px 20px;
+  background-color: rgba(255, 193, 7, 0.1); /* Yellowish tint */
+  border: 1px solid rgba(255, 193, 7, 0.3);
+  border-radius: var(--radius);
+}
+.pd-notes-box h3 {
+  color: #ffc107; /* Yellow text */
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-size: 1.1em;
+}
+.pd-notes-box ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 0.85em;
+  color: #ffe082; /* Lighter yellow */
+}
+
+/* Accommodation Tab Specifics */
+.pd-accommodation-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+.pd-accommodation-item {
+  /* For specific hotel cards */
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  background-color: var(--background); /* Slightly different bg */
+}
+.pd-accommodation-item img {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  display: block;
+}
+.pd-accommodation-item .content {
+  padding: 15px;
+}
+.pd-accommodation-item h4 {
+  font-size: 1.1em;
+  margin-bottom: 5px;
+  color: var(--foreground);
+}
+.pd-accommodation-item .type-tag {
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+  font-size: 0.75em;
+  padding: 2px 6px;
+  border-radius: 4px;
+  display: inline-block;
+  margin-bottom: 10px;
+}
+.pd-accommodation-item p {
+  font-size: 0.85em;
+  color: var(--muted-foreground);
+  margin: 0;
+}
+
+.pd-policy-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 0.9em;
+  color: var(--muted-foreground);
+}
+.pd-policy-list p {
+  margin: 0;
+}
+.pd-policy-list p::before {
+  content: "•";
+  margin-right: 8px;
+}
+
+/* Gallery Tab Specifics */
+.pd-gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 10px;
+}
+.pd-gallery-item {
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  border-radius: var(--radius);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  cursor: pointer; /* Indicate clickable for lightbox later */
+}
+.pd-gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+.pd-gallery-item img:hover {
+  transform: scale(1.05);
+  filter: brightness(1.1);
+}
+
+/* --- Sidebar --- */
+
+.pd-sidebar-sticky-wrapper {
+  position: sticky;
+  top: calc(var(--navbar-height) + 20px); /* Adjust top offset */
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+.pd-sidebar-card {
+  background-color: var(--card);
+  padding: 20px;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+.pd-sidebar-card h3 {
+  font-size: 1.2em;
+  font-weight: 600;
+  color: var(--foreground);
+  margin-top: 0;
+  margin-bottom: 15px;
+}
+.pd-sidebar-price {
+  font-size: 2em;
+  font-weight: 700;
+  color: var(--foreground);
+  margin-bottom: 5px;
+  line-height: 1;
+}
+.pd-sidebar-price-note {
+  font-size: 0.8em;
+  color: var(--muted-foreground);
+  margin-bottom: 20px;
+}
+.btn.full-width {
+  width: 100%;
+  margin-bottom: 10px;
+}
+.btn.full-width:last-child {
+  margin-bottom: 0;
+}
+
+.pd-sidebar-info-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.pd-sidebar-info-list > div {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+.pd-sidebar-info-list .icon {
+  margin-top: 3px;
+  color: var(--muted-foreground);
+  flex-shrink: 0;
+}
+.pd-sidebar-info-list h4 {
+  font-size: 0.95em;
+  font-weight: 600;
+  margin: 0 0 3px 0;
+  color: var(--foreground);
+}
+.pd-sidebar-info-list p {
+  font-size: 0.85em;
+  color: var(--muted-foreground);
+  margin: 0;
+}
+
+.pd-sidebar-why-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.pd-sidebar-why-list li {
+  display: flex;
+  align-items: flex-start;
+  font-size: 0.9em;
+  color: var(--muted-foreground);
+}
+.pd-sidebar-why-list .icon {
+  font-size: 0.8em;
+  margin-top: 4px;
+  color: var(--primary);
+}
+
+/* --- Accordion Styling (Generic) --- */
+.pd-accordion {
+  display: flex;
+  flex-direction: column;
+  gap: 10px; /* Space between items */
+}
+.pd-accordion-item {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden; /* Clip content */
+  background-color: var(--background); /* Slightly diff bg */
+}
+.pd-accordion-trigger {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 15px 20px;
+  background-color: transparent; /* Match item background */
+  border: none;
+  border-bottom: 1px solid transparent; /* Add border when closed */
+  color: var(--foreground);
+  font-size: 1.05em;
+  font-weight: 600;
+  text-align: left;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+.pd-accordion-trigger:hover {
+  background-color: rgba(255, 255, 255, 0.05); /* Subtle hover */
+}
+.pd-accordion-trigger .icon {
+  color: var(--muted-foreground);
+  transition: transform 0.3s ease;
+  margin-left: 10px; /* Space before icon */
+  margin-right: 0; /* Reset default */
+}
+/* Icon rotation when open */
+.pd-accordion-item.open .pd-accordion-trigger .icon {
+  transform: rotate(180deg);
+}
+/* Style trigger when item is open */
+.pd-accordion-item.open .pd-accordion-trigger {
+  border-bottom-color: var(--border); /* Show border when open */
+}
+
+.pd-accordion-content {
+  /* display: none; Height transition is smoother */
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease-out, padding 0.4s ease-out;
+  padding: 0 20px; /* Horizontal padding only when closed */
+}
+.pd-accordion-content p {
+  font-size: 0.9em;
+  color: var(--muted-foreground);
+  line-height: 1.6;
+  margin: 0; /* Remove default p margin */
+}
+/* Style content when item is open */
+.pd-accordion-item.open .pd-accordion-content {
+  /* display: block; */
+  max-height: 1000px; /* Allow content to expand */
+  padding: 15px 20px 20px 20px; /* Add vertical padding */
+  transition: max-height 0.5s ease-in-out, padding 0.5s ease-in-out;
+}
+/* Add space between paragraphs inside content */
+.pd-accordion-content > *:not(:last-child) {
+  margin-bottom: 10px;
+}
+
+/* --- FAQ Section --- */
+.pd-faq-section {
+  padding: 60px 0;
+  background-color: var(--background);
+}
+.pd-section-title {
+  font-size: 2em;
+  font-weight: 700;
+  color: var(--foreground);
+  text-align: center;
+  margin-bottom: 40px;
+}
+.pd-faq-accordion {
+  max-width: 800px;
+  margin: 0 auto;
+  gap: 15px; /* More space for FAQ */
+}
+.pd-faq-accordion .pd-accordion-item {
+  background-color: var(--card); /* Use card bg for FAQ items */
+}
+
+/* --- Related Packages Section --- */
+.pd-related-packages {
+  padding: 60px 0;
+  background: var(--state-gradient, linear-gradient(to right, #333, #555));
+  color: var(--state-text-color, #ffffff);
+  position: relative;
+  /* Add pattern if used in hero */
+  /* background-image: var(--state-gradient), url('pattern.png'); */
+}
+.pd-related-packages::before {
+  /* Match hero pattern overlay if used */
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url("https://www.transparenttextures.com/patterns/subtle-zebra-3d.png");
+  opacity: 0.05;
+  pointer-events: none;
+}
+.pd-related-packages .pd-section-title {
+  color: inherit; /* Inherit from section text color */
+  margin-bottom: 15px;
+}
+#related-packages-subtitle {
+  font-size: 1.1em;
+  max-width: 700px;
+  margin: 0 auto 30px auto;
+  opacity: 0.9;
+}
+.btn.related-btn {
+  /* Style the button for contrast */
+  background-color: rgba(255, 255, 255, 0.9);
+  color: #333; /* Dark text */
+  border: 1px solid transparent;
+  padding: 10px 25px;
+}
+.btn.related-btn:hover {
+  background-color: #ffffff;
+  color: #000;
+}
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 992px) {
+  .pd-main-layout {
+    grid-template-columns: 1fr; /* Stack sidebar below tabs */
+  }
+  .pd-sidebar-sticky-wrapper {
+    position: static; /* Unstick sidebar */
+  }
+}
+
+@media (max-width: 768px) {
+  #package-title {
+    font-size: 2.2em;
+  }
+  .pd-hero-info {
+    font-size: 0.9em;
+  }
+  .pd-tabs-list {
+    overflow-x: auto;
+    white-space: nowrap;
+    padding-bottom: 5px;
+  } /* Allow horizontal scroll */
+  .pd-tab-trigger {
+    padding: 10px 15px;
+    font-size: 0.9em;
+  }
+  .pd-card h2 {
+    font-size: 1.3em;
+  }
+  .pd-gallery-grid {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  }
+  .pd-accordion-trigger {
+    font-size: 1em;
+  }
+}

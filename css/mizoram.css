@@ -1,0 +1,342 @@
+/* --- CSS Variables --- */
+:root {
+    --primary-color: #2a5c45;
+    /* Deep green */
+    --secondary-color: #e8b923;
+    /* Gold/Yellow */
+    --accent-color: #d94f2b;
+    /* Terracotta/Orange */
+    --light-bg: #f5f5f0;
+    /* Light beige/off-white */
+    --text-color: #333;
+    --light-text: #f8f8f8;
+    /* Lighter white for contrast on dark */
+    --white: #ffffff;
+}
+
+/* --- Base Styles --- */
+body {
+    /* Using Poppins as example, fallback to sans-serif */
+    font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    color: var(--text-color);
+    background-color: var(--light-bg);
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    /* Only horizontal padding needed here */
+}
+
+section {
+    padding: 4rem 0;
+    /* Vertical padding for sections */
+    /* Removed margin-bottom, handled by section padding */
+}
+
+h1,
+h2,
+h3 {
+    line-height: 1.3;
+    /* Consistent line height for headings */
+}
+
+h2 {
+    color: var(--primary-color);
+    font-size: 2.2rem;
+    margin-bottom: 2.5rem;
+    /* Increased margin */
+    position: relative;
+    display: inline-block;
+    /* Needed for pseudo-element positioning */
+}
+
+/* Underline style for H2 */
+h2::after {
+    content: '';
+    position: absolute;
+    width: 60%;
+    /* Slightly wider */
+    height: 4px;
+    background: var(--secondary-color);
+    bottom: -10px;
+    /* Position below baseline */
+    left: 0;
+    border-radius: 2px;
+    /* Optional rounded ends */
+}
+
+/* --- Header --- */
+div#home {
+    /* Targeting the main header */
+    background: linear-gradient(rgba(0, 0, 0, 0.42), rgba(0, 0, 0, 0.67)), url('../images/head3.jpg');
+    /* Slightly less dark overlay */
+    background-size: cover;
+    background-position: center;
+    color: var(--white);
+    text-align: center;
+    /* Padding adjusted to account for navbar height + space */
+    padding: 8rem 2rem 5rem 2rem;
+    /* More top/bottom padding */
+    position: relative;
+    /* Needed for absolute positioned nav */
+    min-height: 100vh;
+    /* Ensure header has decent height */
+    display: flex;
+    /* Use flexbox for alignment */
+    flex-direction: column;
+    /* Stack nav and content */
+    justify-content: center;
+    /* Center content vertically */
+}
+
+.header-content {
+    max-width: 800px;
+    margin: 0 auto;
+    /* Center content horizontally */
+    position: relative;
+    /* Ensure it's part of stacking context */
+    z-index: 5;
+    /* Below navbar if needed, but usually okay */
+    padding-top: 50px;
+    /* Add space below the absolute nav */
+}
+
+div#home h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.tagline {
+    font-size: 1.5rem;
+    font-style: italic;
+    margin-bottom: 2rem;
+    color: var(--light-text);
+    /* Lighter text for better contrast */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+/* General Button Style (from header) */
+.btn-explore {
+    display: inline-block;
+    background-color: var(--accent-color);
+    color: var(--white);
+    padding: 0.8rem 1.8rem;
+    /* Slightly more padding */
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    border: 2px solid var(--accent-color);
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.btn-explore:hover {
+    background-color: transparent;
+    color: var(--accent-color);
+    /* For light backgrounds, ensure hover text is visible */
+    /* color: var(--white); / / Use if hovering over dark bg */
+}
+
+
+
+
+/* --- About Section --- */
+.about-mizoram {
+    background-color: var(--white);
+    padding: 2.5rem;
+    /* More padding */
+    border-radius: 8px;
+    margin-top: 4rem;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.highlight {
+    color: var(--accent-color);
+    font-weight: bold;
+}
+
+/* --- Destinations Section --- */
+#destinations h2 {
+    text-align: center;
+    /* Center the section title */
+    display: block;
+    /* Allow centering */
+}
+
+#destinations h2::after {
+    left: 50%;
+    /* Center the underline */
+    transform: translateX(-50%);
+    width: 100px;
+    /* Fixed width for centered underline */
+}
+
+
+.destinations-grid {
+    /* Using the renamed class */
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    /* Adjust minmax */
+    gap: 2rem;
+}
+
+.destination-card {
+    background-color: var(--white);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.07);
+    /* Slightly adjusted shadow */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    /* Added for consistent content height */
+    flex-direction: column;
+    /* Stack image and content */
+}
+
+.destination-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    /* Added subtle scale */
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
+    /* Slightly adjusted shadow */
+}
+
+.destination-img {
+    height: 250px;
+    overflow: hidden;
+}
+
+.destination-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.destination-card:hover .destination-img img {
+    transform: scale(1.1);
+}
+
+.destination-content {
+    padding: 1.5rem;
+    flex-grow: 1;
+    /* Allow content to take remaining space */
+    display: flex;
+    /* Use flex for inner layout */
+    flex-direction: column;
+    /* Stack title, p, link */
+}
+
+.destination-content h3 {
+    color: var(--primary-color);
+    margin-top: 0;
+    margin-bottom: 0.8rem;
+    /* Added margin */
+    font-size: 1.5rem;
+}
+
+.destination-content p {
+    flex-grow: 1;
+    /* Allow paragraph to take space */
+    margin-bottom: 1rem;
+    /* Ensure space before button */
+}
+
+
+.read-more {
+    color: var(--accent-color);
+    text-decoration: none;
+    font-weight: bold;
+    display: inline-block;
+    margin-top: auto;
+    /* Push to bottom */
+    padding: 0.3rem 0;
+    /* Add padding for easier click */
+}
+
+.read-more:hover {
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    /* Thicker underline */
+}
+
+/* --- Footer --- */
+footer {
+    background-color: var(--primary-color);
+    color: var(--light-text);
+    text-align: center;
+    padding: 2.5rem 1rem;
+    /* More padding */
+    margin-top: 3rem;
+}
+
+/* --- Responsive Design --- */
+@media (max-width: 992px) {
+
+    /* Tablet breakpoint */
+    .nav-links {
+        display: none;
+        /* Hide nav links */
+        /* Add mobile menu styles here if implementing toggle */
+    }
+
+    .menu-icon {
+        display: block;
+        /* Show menu icon */
+    }
+
+    header nav {
+        padding: 15px 30px;
+        /* Adjust nav padding */
+    }
+}
+
+
+@media (max-width: 768px) {
+
+    /* Mobile breakpoint */
+    header#home h1 {
+        font-size: 2.2rem;
+    }
+
+    .tagline {
+        font-size: 1.2rem;
+    }
+
+    header#home {
+        padding: 6rem 1rem 4rem 1rem;
+        /* Adjust header padding */
+        min-height: 60vh;
+    }
+
+    .header-content {
+        padding-top: 40px;
+        /* Adjust space below nav */
+    }
+
+    h2 {
+        font-size: 1.8rem;
+        /* Smaller section titles */
+    }
+
+    .container {
+        padding: 0 1rem;
+        /* Adjust container padding */
+    }
+
+    .destinations-grid {
+        /* Already adapts with auto-fit, but could force 1 column */
+        grid-template-columns: 1fr;
+    }
+
+    .destination-img {
+        height: 220px;
+        /* Adjust image height */
+    }
+}

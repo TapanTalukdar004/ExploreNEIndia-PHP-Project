@@ -1,0 +1,370 @@
+/* css/why-us.css */
+
+/* Import or ensure universal styles are loaded first */
+/* @import url('universal.css'); */
+
+/* Re-define variables or ensure they are inherited from universal.css */
+:root {
+  /* Ensure theme variables are available */
+  --background: #18191b;
+  --foreground: #e4e6eb;
+  --card: #242526;
+  --border: #3a3a45;
+  --primary: #4a90e2; /* Example blue */
+  --primary-foreground: #ffffff;
+  --secondary: #f8f9fa; /* Lighter background for contrast */
+  --secondary-foreground: #343a40; /* Darker text for light bg */
+  --muted-foreground: #b0b3b8;
+  --radius: 0.5rem;
+  --accent-color: #e74c3c; /* From universal? */
+  /* Specific Colors for this page */
+  --why-us-header-bg: linear-gradient(
+    to right,
+    #2c3e50,
+    #34495e
+  ); /* Example dark blue gradient */
+  --why-us-feature-icon-bg: rgba(
+    74,
+    144,
+    226,
+    0.1
+  ); /* Light blue bg for icon */
+  --why-us-feature-icon-color: var(--primary);
+  --why-us-testimonial-bg: var(--card);
+  --why-us-process-bg: var(--background);
+  --why-us-process-step-color: var(--primary);
+  --why-us-cta-bg: var(--primary);
+  --why-us-cta-text-color: var(--primary-foreground);
+  --why-us-cta-button-bg: var(--white);
+  --why-us-cta-button-text: var(--primary);
+  --rating-star-color: #ffc107; /* Yellow */
+}
+
+/* --- General Page Styles --- */
+body {
+  /* Ensure base styles from universal.css are applied */
+  background-color: var(--background); /* Default dark */
+}
+
+/* --- Utility Classes --- */
+.text-center {
+  text-align: center;
+}
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+/* --- Page Header --- */
+.page-header.why-us-header-bg {
+  padding: 90px 0 70px 0;
+  background: linear-gradient(296deg,#1d262b,#231d2b,#1d191f,#202021,#000000);
+  background-size: 240% 240%;
+  animation: gradient-animation 20s ease infinite;
+  color: var(--white);
+  padding-top: calc(90px + var(--navbar-height)); /* Original top padding + navbar height */
+  margin-top: calc(-1 * var(--navbar-height));
+}
+@keyframes gradient-animation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+.page-header .page-title {
+  /* Assuming styles from universal */
+  font-size: 2.8em;
+  margin-bottom: 15px;
+  font-weight: 700;
+}
+.page-header .page-subtitle {
+  font-size: 1.2em;
+  max-width: 700px;
+  margin: 0 auto;
+  opacity: 0.9;
+}
+
+/* --- Common Section Styles --- */
+.wu-section {
+  padding: 80px 0; /* Consistent vertical padding */
+}
+.wu-section-title {
+  font-size: 2.2em;
+  font-weight: 700;
+  color: var(--foreground);
+  text-align: center;
+  margin-bottom: 60px; /* Space below title */
+  position: relative;
+}
+/* Optional: Underline effect for section titles */
+.wu-section-title::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 3px;
+  background-color: var(--primary);
+  margin: 15px auto 0;
+  border-radius: 2px;
+}
+
+/* --- Grid Layout --- */
+.wu-grid {
+  display: grid;
+  gap: 30px; /* Default gap */
+}
+.wu-grid-3 {
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(300px, 1fr)
+  ); /* 3 columns, responsive */
+}
+
+/* --- Features Section --- */
+.wu-features-section {
+  background-color: var(--secondary); /* Lighter background */
+  color: var(--secondary-foreground); /* Darker text */
+}
+.wu-features-section .wu-section-title {
+  color: var(--secondary-foreground); /* Darker title on light bg */
+}
+.wu-features-section .wu-section-title::after {
+  background-color: var(--secondary-foreground); /* Darker underline */
+}
+
+.wu-feature-card {
+  text-align: center;
+  padding: 30px 20px;
+  background-color: var(--white); /* White cards on light bg */
+  border-radius: var(--radius);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.wu-feature-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+}
+
+.wu-feature-icon-wrapper {
+  width: 70px;
+  height: 70px;
+  background-color: var(--why-us-feature-icon-bg);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 25px auto; /* Center and space below */
+  /* border: 4px solid var(--white); */ /* Removed border */
+  /* box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); */ /* Removed shadow */
+}
+.wu-feature-icon {
+  font-size: 2em; /* Adjust icon size */
+  color: var(--why-us-feature-icon-color);
+}
+.wu-feature-title {
+  font-size: 1.3em;
+  font-weight: 600;
+  color: var(--secondary-foreground);
+  margin-bottom: 15px;
+}
+.wu-feature-description {
+  font-size: 0.95em;
+  color: #555; /* Slightly darker gray text */
+  line-height: 1.7;
+}
+
+/* --- Testimonials Section --- */
+.wu-testimonials-section {
+    background: linear-gradient(215deg,#011b2d,#292929,#242f26,#000000);
+    background-size: 300% 300%;
+    animation: gradient-animation 25s ease infinite;
+}
+.wu-testimonial-card {
+  background-color: var(--why-us-testimonial-bg); /* Use card variable */
+  padding: 25px;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+}
+.wu-testimonial-header {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+.wu-testimonial-avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--border);
+}
+.wu-testimonial-name {
+  font-size: 1.1em;
+  font-weight: 600;
+  color: var(--foreground);
+  margin: 0 0 5px 0;
+}
+.wu-testimonial-rating {
+  color: var(--rating-star-color);
+  font-size: 0.9em;
+}
+.wu-testimonial-text {
+  font-style: italic;
+  color: var(--muted-foreground);
+  font-size: 0.95em;
+  line-height: 1.7;
+  position: relative;
+  padding-left: 25px; /* Space for quote */
+}
+/* Optional: Add quote marks */
+.wu-testimonial-text::before {
+  content: "\201C"; /* Left double quote */
+  font-size: 2em;
+  color: var(--primary);
+  position: absolute;
+  left: 0;
+  top: -5px;
+  line-height: 1;
+  opacity: 0.5;
+}
+
+/* --- Booking Process Section --- */
+.wu-process-section {
+    background: linear-gradient(296deg,#1d262b,#231d2b,#1d191f,#202021,#000000);
+    background-size: 240% 240%;
+    animation: gradient-animation 20s ease infinite;
+}
+.wu-process-steps {
+  max-width: 900px; /* Limit width */
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 25px; /* Space between steps */
+  position: relative;
+}
+/* Optional: Add connecting line */
+.wu-process-steps::before {
+  content: "";
+  position: absolute;
+  top: 25px; /* Start below first number */
+  bottom: 25px; /* End above last number */
+  left: 24px; /* Align with center of number */
+  width: 2px;
+  background-color: var(--border);
+  z-index: 0;
+}
+
+.wu-process-step {
+  display: flex;
+  align-items: flex-start; /* Align number top with text */
+  gap: 25px;
+  position: relative; /* For z-index */
+  z-index: 1;
+}
+.wu-process-number {
+  width: 50px;
+  height: 50px;
+  flex-shrink: 0; /* Prevent shrinking */
+  background-color: var(--why-us-process-step-color);
+  color: var(--primary-foreground);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5em;
+  font-weight: 700;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+}
+.wu-process-text h3 {
+  font-size: 1.25em;
+  font-weight: 600;
+  color: var(--foreground);
+  margin: 5px 0 8px 0; /* Adjust vertical alignment */
+}
+.wu-process-text p {
+  font-size: 0.95em;
+  color: var(--muted-foreground);
+  line-height: 1.7;
+  margin: 0;
+}
+
+/* --- CTA Section --- */
+.wu-cta-section {
+    background: linear-gradient(296deg,#1d262b,#231d2b,#1d191f,#202021,#000000);
+  background-size: 240% 240%;
+  animation: gradient-animation 20s ease infinite;
+  color: var(--why-us-cta-text-color);
+}
+.wu-cta-title {
+  font-size: 2em;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: inherit; /* Inherit color */
+}
+.wu-cta-title::after {
+  /* Remove underline for CTA title */
+  display: none;
+}
+.wu-cta-text {
+  font-size: 1.15em;
+  max-width: 700px;
+  margin: 0 auto 35px auto; /* Space below text */
+  line-height: 1.7;
+  opacity: 0.9;
+}
+.wu-cta-button {
+  /* Style based on .btn but with CTA colors */
+  background-color: var(--why-us-cta-button-bg);
+  color: var(--why-us-cta-button-text);
+  padding: 14px 35px;
+  font-size: 1em;
+  border: 2px solid var(--why-us-cta-button-bg);
+}
+.wu-cta-button:hover {
+  background-color: transparent;
+  color: var(--why-us-cta-button-bg);
+  border-color: var(--why-us-cta-button-bg);
+}
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 768px) {
+  .wu-section {
+    padding: 60px 0;
+  }
+  .wu-section-title {
+    font-size: 1.8em;
+    margin-bottom: 40px;
+  }
+  .wu-grid-3 {
+    grid-template-columns: 1fr;
+  } /* Stack grids */
+  .wu-feature-card {
+    padding: 25px 15px;
+  }
+  .wu-testimonial-card {
+    padding: 20px;
+  }
+  .wu-process-steps::before {
+    display: none;
+  } /* Hide connecting line */
+  .wu-process-step {
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+  }
+  .wu-process-number {
+    margin-bottom: 15px;
+  }
+  .wu-cta-title {
+    font-size: 1.6em;
+  }
+  .wu-cta-text {
+    font-size: 1em;
+  }
+}
