@@ -59,7 +59,7 @@ The portal showcases the diverse states (Assam, Meghalaya, Sikkim, Nagaland, Man
 
 2.  **Clone the Repository:**
     ```bash
-    git clone https://github.com/your-username/[Your Repository Name].git
+    git clone https://github.com/TapanTalukdar004/ExploreNEIndia-PHP-Project.git
     # Or download the ZIP file and extract it
     ```
 
